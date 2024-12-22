@@ -1,4 +1,5 @@
 import "./Header.css";
+import "/src/blocks/user.css";
 import wtwrLogo from "/src/assets/logo.svg";
 import userAvatar from "/src/assets/avatar_image.png";
 
