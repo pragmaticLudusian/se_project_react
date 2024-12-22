@@ -15,7 +15,7 @@
 }
 
 .header__time-and-place {
-  margin: 3px 0 0; /* align baseline */
+  margin: 0;
 }
 
 .header__add-clothes {

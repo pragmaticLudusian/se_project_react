@@ -8,10 +8,14 @@ function Header() {
     month: "long",
     day: "numeric",
   });
+  const currentPlace = "South Park";
+
   return (
     <header className="header">
       <img src={wtwrLogo} alt="WTWR logo" className="header__logo" />
-      <p className="header__time-and-place">{currentDate}</p>
+      <p className="header__time-and-place">
+        {[currentDate, currentPlace].join(", ")}
+      </p>
       <button className="header__add-clothes" type="button">
         + Add clothes
       </button>
