@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  font-family: "Cabinet Grotesk";
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+  margin-right: 24px;
+}
+
+.header__time-and-place {
+  margin: 3px 0 0; /* align baseline */
+}
+
+.header__add-clothes {
+  margin: 0 20px 0 auto;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  font-weight: inherit;
+  line-height: inherit;
+}
