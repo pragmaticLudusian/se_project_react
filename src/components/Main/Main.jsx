@@ -1,9 +1,10 @@
 import "./Main.css";
+import WeatherCard from "../WeatherCard/WeatherCard";
 
-function Main() {
+function Main(props) {
   return (
     <div className="main">
-      <p>test</p>
+      <WeatherCard weather={props.weather} temperature={props.temperature} />
     </div>
   );
 }

@@ -6,8 +6,8 @@ import Main from "../Main/Main";
 function App() {
   return (
     <>
-      <Header />
-      <Main />
+      <Header location="South Park" />
+      <Main weather="clear-day" temperature="14.4&deg;C" />
     </>
   );
 }

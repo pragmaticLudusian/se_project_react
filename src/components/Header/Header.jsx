@@ -3,18 +3,17 @@ import "/src/blocks/user.css";
 import wtwrLogo from "/src/assets/logo.svg";
 import userAvatar from "/src/assets/avatar_image.png";
 
-function Header() {
+function Header(props) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  const currentPlace = "South Park";
 
   return (
     <header className="header">
       <img src={wtwrLogo} alt="WTWR logo" className="header__logo" />
       <p className="header__time-and-place">
-        {[currentDate, currentPlace].join(", ")}
+        {[currentDate, props.location].join(", ")}
       </p>
       <button className="header__add-clothes" type="button">
         + Add clothes
