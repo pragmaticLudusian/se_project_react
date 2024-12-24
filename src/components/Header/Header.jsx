@@ -8,6 +8,7 @@ function Header(props) {
     month: "long",
     day: "numeric",
   });
+  const isImage = true;
 
   return (
     <header className="header">
@@ -20,7 +21,7 @@ function Header(props) {
       </button>
       <div className="user">
         <p className="user__name">Terrence Tegegne</p>
-        <img src={userAvatar} alt="User avatar" className="user__avatar" />
+        <div className="user__avatar user__avatar_image">{!isImage && "T"}</div>
       </div>
     </header>
   );

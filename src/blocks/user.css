@@ -11,4 +11,18 @@
   width: 40px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.user__avatar_image {
+  background: url(/src/assets/avatar_image.png) no-repeat center/cover;
+}
+.user__avatar_text {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
