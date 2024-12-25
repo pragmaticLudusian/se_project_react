@@ -1,4 +1,5 @@
 import "./Main.css";
+import "/src/blocks/gallery.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
@@ -6,22 +7,22 @@ function Main(props) {
   const clothesArray = [
     {
       name: "T-Shirt",
-      image: "/assets/clothes/sample_t-shirt.png",
+      image: "/src/assets/clothes/sample_t-shirt.png",
       type: "warm",
     },
     {
       name: "Shorts",
-      image: "/assets/clothes/sample_shorts.png",
+      image: "/src/assets/clothes/sample_shorts.png",
       type: "hot",
     },
     {
       name: "Cap",
-      image: "/assets/clothes/sample_cap.png",
+      image: "/src/assets/clothes/sample_cap.png",
       type: "cold",
     },
     {
       name: "Sneakers",
-      image: "/assets/clothes/sample_sneakers.png",
+      image: "/src/assets/clothes/sample_sneakers.png",
       type: "warm",
     },
   ];
@@ -31,7 +32,16 @@ function Main(props) {
       <p className="main__text">
         Today is {props.temperature} / You may want to wear:
       </p>
-      <ItemCard />
+      <ul className="gallery">
+        {clothesArray.map((item, i) => (
+          <ItemCard
+            key={i}
+            name={item.name}
+            image={item.image}
+            type={item.type}
+          />
+        ))}
+      </ul>
     </div>
   );
 }

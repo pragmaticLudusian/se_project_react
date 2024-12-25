@@ -1,14 +1,13 @@
 import "./Header.css";
 import "/src/blocks/user.css";
 import wtwrLogo from "/src/assets/logo.svg";
-import userAvatar from "/src/assets/avatar_image.png";
 
 function Header(props) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  const isImage = true;
+  const isImage = true; // test
 
   return (
     <header className="header">

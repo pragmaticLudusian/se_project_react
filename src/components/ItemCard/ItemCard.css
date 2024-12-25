@@ -1,0 +1,34 @@
+.itemcard {
+  /* width: 325px; handled in gallery.css via grid auto-fit */
+  height: 328px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  background-color: #e9e9e9;
+  box-sizing: border-box;
+}
+
+.itemcard__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  gap: 10px;
+}
+
+.itemcard__name {
+  font-size: 16px;
+  line-height: 1.2;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 2px 12px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.itemcard__like {
+  padding: 0;
+  border: 0;
+  width: 18px;
+  height: 15px;
+  background: url("/src/assets/like.svg") no-repeat center/contain;
+  cursor: pointer;
+}
