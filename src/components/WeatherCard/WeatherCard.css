@@ -14,3 +14,47 @@
 .weather-card_type_clear-day {
   background: url("/src/assets/weather/clear-day.svg") no-repeat center/100%;
 }
+
+.weather-card_type_clear-night {
+  background: url("/src/assets/weather/clear-night.svg") no-repeat center/100%;
+}
+
+.weather-card_type_cloudy-day {
+  background: url("/src/assets/weather/cloudy-day.svg") no-repeat center/100%;
+}
+
+.weather-card_type_cloudy-night {
+  background: url("/src/assets/weather/cloudy-night.svg") no-repeat center/100%;
+}
+
+.weather-card_type_rain-day {
+  background: url("/src/assets/weather/rain-day.svg") no-repeat center/100%;
+}
+
+.weather-card_type_rain-night {
+  background: url("/src/assets/weather/rain-night.svg") no-repeat center/100%;
+}
+
+.weather-card_type_storm-day {
+  background: url("/src/assets/weather/storm-day.svg") no-repeat center/100%;
+}
+
+.weather-card_type_storm-night {
+  background: url("/src/assets/weather/storm-night.svg") no-repeat center/100%;
+}
+
+.weather-card_type_snow-day {
+  background: url("/src/assets/weather/snow-day.svg") no-repeat center/100%;
+}
+
+.weather-card_type_snow-night {
+  background: url("/src/assets/weather/snow-night.svg") no-repeat center/100%;
+}
+
+.weather-card_type_fog-day {
+  background: url("/src/assets/weather/fog-day.svg") no-repeat center/100%;
+}
+
+.weather-card_type_fog-night {
+  background: url("/src/assets/weather/fog-night.svg") no-repeat center/100%;
+}
