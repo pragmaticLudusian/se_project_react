@@ -26,6 +26,7 @@ function Main(props) {
       type: "warm",
     },
   ];
+
   return (
     <div className="main">
       <WeatherCard weather={props.weather} temperature={props.temperature} />
@@ -33,14 +34,18 @@ function Main(props) {
         Today is {props.temperature} / You may want to wear:
       </p>
       <ul className="gallery">
-        {clothesArray.map((item, i) => (
-          <ItemCard
-            key={i}
-            name={item.name}
-            image={item.image}
-            type={item.type}
-          />
-        ))}
+        {clothesArray
+          .filter((item) => {
+            return item.type !== "";
+          })
+          .map((item, i) => (
+            <ItemCard
+              key={i}
+              name={item.name}
+              image={item.image}
+              type={item.type}
+            />
+          ))}
       </ul>
     </div>
   );
