@@ -6,13 +6,13 @@ function ItemCard(props) {
       props.image,
       import.meta.url
     )}) no-repeat center/cover`,
-  };
+  }; // questionable if bg state supposed to be changed with inline styles
 
   return (
-    <li className="itemcard" key={props.i} style={bgImage}>
-      <div className="itemcard__container">
-        <div className="itemcard__name">{props.name}</div>
-        <button type="button" className="itemcard__like" />
+    <li className="item-card" key={props.i} style={bgImage}>
+      <div className="item-card__container">
+        <div className="item-card__name">{props.name}</div>
+        <button type="button" className="item-card__like" />
       </div>
     </li>
   );

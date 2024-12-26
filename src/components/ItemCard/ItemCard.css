@@ -1,4 +1,4 @@
-.itemcard {
+.item-card {
   /* width: 325px; handled in gallery.css via grid auto-fit */
   height: 328px;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-.itemcard__container {
+.item-card__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +15,7 @@
   gap: 10px;
 }
 
-.itemcard__name {
+.item-card__name {
   font-size: 16px;
   line-height: 1.2;
   color: rgba(0, 0, 0, 0.6);
@@ -24,7 +24,7 @@
   background-color: #fff;
 }
 
-.itemcard__like {
+.item-card__like {
   padding: 0;
   border: 0;
   width: 18px;
