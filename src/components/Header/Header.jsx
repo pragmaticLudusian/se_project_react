@@ -15,7 +15,15 @@ function Header(props) {
       <p className="header__time-and-place">
         {[currentDate, props.location].join(", ")}
       </p>
-      <button className="header__add-clothes" type="button">
+      <button
+        className="header__add-clothes"
+        type="button"
+        onClick={() => {
+          document
+            .querySelector(".modal_type_add-clothes")
+            .classList.add("modal_opened");
+        }}
+      >
         + Add clothes
       </button>
       <div className="user">
