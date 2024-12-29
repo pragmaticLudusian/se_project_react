@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header location="South Park" />
-      <Main weather="snow-night" temperature="14.4&deg;C" />
+      <Main weather="clear-day" temperature="14.4&deg;C" />
       <Footer />
       <ModalWithForm
         title="New garment"

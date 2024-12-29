@@ -5,7 +5,7 @@ function ModalWithForm(props) {
   return (
     <form
       action=""
-      className={`modal modal_type_${props.name} modal_opened`}
+      className={`modal modal_type_${props.name} /!*modal_opened*/`}
       name={`${props.name}`}
     >
       <div className="modal__window">
