@@ -1,4 +1,5 @@
 import "./ModalWithForm.css";
+import "/src/blocks/form.css";
 
 function ModalWithForm(props) {
   return (
@@ -15,7 +16,11 @@ function ModalWithForm(props) {
           props.children
           /* the rest of the elements outside of props.children are used for default OOBE building for the component in question */
         }
-        <button type="button" className="modal__submit-button">
+        <button
+          type="submit"
+          className="modal__submit-button modal__submit-button_inactive"
+          disabled
+        >
           {props.buttonText}
         </button>
       </div>
