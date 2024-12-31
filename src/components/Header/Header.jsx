@@ -18,11 +18,7 @@ function Header(props) {
       <button
         className="header__add-clothes"
         type="button"
-        onClick={() => {
-          document
-            .querySelector(".modal_type_add-clothes")
-            .classList.add("modal_opened");
-        }}
+        onClick={props.openModal}
       >
         + Add clothes
       </button>
