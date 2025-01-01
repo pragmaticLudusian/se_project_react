@@ -18,7 +18,7 @@ function Header(props) {
       <button
         className="header__add-clothes"
         type="button"
-        onClick={props.openModal}
+        onClick={props.openFormModal}
       >
         + Add clothes
       </button>

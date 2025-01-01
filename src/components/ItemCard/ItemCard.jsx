@@ -10,7 +10,7 @@ function ItemCard(props) {
 
   return (
     <li className="item-card" key={props.i} style={bgImage}>
-      <div className="item-card__container">
+      <div className="item-card__header">
         <div className="item-card__name">{props.name}</div>
         <button type="button" className="item-card__like" />
       </div>

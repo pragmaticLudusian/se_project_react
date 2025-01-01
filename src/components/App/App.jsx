@@ -4,22 +4,27 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
-  const [modalOpened, setModalOpened] = useState(false);
+  const [formModalOpened, setFormModalOpened] = useState(false);
+  const [itemModalOpened, setItemModalOpened] = useState(true);
 
   return (
     <>
-      <Header location="South Park" openModal={() => setModalOpened(true)} />
+      <Header
+        location="South Park"
+        openFormModal={() => setFormModalOpened(true)}
+      />
       <Main weather="clear-day" temperature="14.4&deg;C" />
       <Footer />
-      {modalOpened && (
+      {formModalOpened && (
         <ModalWithForm
           title="New garment"
           name="add-clothes"
           buttonText="Add garment"
           onClose={() => {
-            setModalOpened(false);
+            setFormModalOpened(false);
           }}
         >
           <fieldset className="form">
@@ -86,6 +91,7 @@ function App() {
           </fieldset>
         </ModalWithForm>
       )}
+      {itemModalOpened && <ItemModal></ItemModal>}
     </>
   );
 }
