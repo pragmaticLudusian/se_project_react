@@ -1,25 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import getWeatherInfo from "/src/utils/weatherApi";
 
 function App() {
   const [formModalOpened, setFormModalOpened] = useState(false);
   const [itemModalOpened, setItemModalOpened] = useState(false);
   const [selectedItemCard, setItemCard] = useState(null); // just id goes here?
+  const [weatherData, setWeatherData] = useState({});
+
+  useEffect(() => {
+    getWeatherInfo().then((data) => {
+      setWeatherData(data);
+    });
+  }, []);
 
   return (
     <>
       <Header
-        location="South Park"
+        location={weatherData.city}
         openFormModal={() => setFormModalOpened(true)}
       />
       <Main
         weather="clear-day"
-        temperature="14.4&deg;C"
+        temperature={`${weatherData.temp}\u00b0C`}
         openItemModal={() => {
           setItemModalOpened(true); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
         }}

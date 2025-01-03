@@ -20,3 +20,6 @@ export const clothesArray = [
     type: "warm",
   },
 ];
+export const apiKey = "f828351354ab9a7e175535ecf9a0ad3c";
+export const latitude = 32.088889;
+export const longitude = 34.886389;
