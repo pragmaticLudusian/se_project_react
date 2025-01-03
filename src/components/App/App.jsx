@@ -8,7 +8,8 @@ import ItemModal from "../ItemModal/ItemModal";
 
 function App() {
   const [formModalOpened, setFormModalOpened] = useState(false);
-  const [itemModalOpened, setItemModalOpened] = useState(true);
+  const [itemModalOpened, setItemModalOpened] = useState(false);
+  const [selectedItemCard, setItemCard] = useState(null); // just id goes here?
 
   return (
     <>
@@ -16,7 +17,16 @@ function App() {
         location="South Park"
         openFormModal={() => setFormModalOpened(true)}
       />
-      <Main weather="clear-day" temperature="14.4&deg;C" />
+      <Main
+        weather="clear-day"
+        temperature="14.4&deg;C"
+        openItemModal={() => {
+          setItemModalOpened(true); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
+        }}
+        itemCardData={(card) => {
+          setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main and then to the specific ItemCard, then return the card prop set (object) back to App, then pass it ItemModal's children elements by reading its state
+        }}
+      />
       <Footer />
       {formModalOpened && (
         <ModalWithForm
@@ -91,7 +101,29 @@ function App() {
           </fieldset>
         </ModalWithForm>
       )}
-      {itemModalOpened && <ItemModal></ItemModal>}
+      {itemModalOpened && (
+        <ItemModal
+          onClose={() => {
+            setItemModalOpened(false);
+          }} // must be an anon function, since a regular callback causes mass rerender issues and refuse to load with content even if forced
+          // itemCardData={selectedItemCard} // prop would be needed if props.children isn't used
+        >
+          <div
+            className="item-modal__image"
+            style={{
+              background: `url(${new URL(
+                selectedItemCard.image,
+                import.meta.url
+              )}) no-repeat center/cover`,
+            }}
+          >
+            <div className="item-modal__name">{selectedItemCard.name}</div>
+          </div>
+          <div className="item-modal__description">
+            Weather: {selectedItemCard.type}
+          </div>
+        </ItemModal>
+      )}
     </>
   );
 }
