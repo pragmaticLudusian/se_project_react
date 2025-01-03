@@ -2,7 +2,7 @@ import "./Main.css";
 import "/src/blocks/gallery.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { clothesArray } from "/src/utils/constants";
+import { defaultClothingItems } from "/src/utils/constants";
 
 function Main(props) {
   return (
@@ -12,16 +12,16 @@ function Main(props) {
         Today is {props.temperature} / You may want to wear:
       </p>
       <ul className="gallery">
-        {clothesArray
+        {defaultClothingItems
           .filter((item) => {
-            return item.type !== ""; // filter is temp disabled
+            return item.weather !== ""; // filter is temp disabled
           })
           .map((item, i) => (
             <ItemCard
               key={i}
               name={item.name}
-              image={item.image}
-              type={item.type}
+              link={item.link}
+              weather={item.weather}
               openItemModal={props.openItemModal} // props passed from App
               itemCardData={props.itemCardData}
             />

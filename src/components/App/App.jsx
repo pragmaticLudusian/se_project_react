@@ -98,6 +98,18 @@ function App() {
               <input
                 type="radio"
                 name="weather"
+                id="cool"
+                value="cool"
+                className="form__radio-button"
+              />
+              <label htmlFor="cool" className="form__radio-label">
+                Cool
+              </label>
+            </div>
+            <div className="form__radio-container">
+              <input
+                type="radio"
+                name="weather"
                 id="cold"
                 value="cold"
                 className="form__radio-button"
@@ -120,7 +132,7 @@ function App() {
             className="item-modal__image"
             style={{
               background: `url(${new URL(
-                selectedItemCard.image,
+                selectedItemCard.link,
                 import.meta.url
               )}) no-repeat center/cover`,
             }}
@@ -128,7 +140,7 @@ function App() {
             <div className="item-modal__name">{selectedItemCard.name}</div>
           </div>
           <div className="item-modal__description">
-            Weather: {selectedItemCard.type}
+            Weather: {selectedItemCard.weather}
           </div>
         </ItemModal>
       )}

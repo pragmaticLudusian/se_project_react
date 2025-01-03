@@ -3,7 +3,7 @@ import "./ItemCard.css";
 function ItemCard(props) {
   const bgImage = {
     background: `url(${new URL(
-      props.image,
+      props.link,
       import.meta.url
     )}) no-repeat center/cover`,
   }; // questionable if bg state supposed to be changed with inline styles
