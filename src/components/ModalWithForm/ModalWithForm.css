@@ -1,4 +1,4 @@
-.modal {
+.form-modal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.modal__window {
+.form-modal__window {
   position: relative;
   background-color: #fff;
   border-radius: 20px;
@@ -18,13 +18,14 @@
   font-size: 16px;
   padding: 28px;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
 }
 
-.modal__title {
+.form-modal__title {
   margin: 0 0 24px;
 }
 
-.modal__close-button {
+.form-modal__close-button {
   position: absolute;
   top: 22px;
   right: 30px;
@@ -37,7 +38,7 @@
   cursor: pointer;
 }
 
-.modal__submit-button {
+.form-modal__submit-button {
   border: 0;
   border-radius: 4px;
   padding: 8px 16px;
@@ -48,16 +49,16 @@
   display: block;
 }
 
-.modal__submit-button_active {
+.form-modal__submit-button_active {
   background-color: #000;
   transition: background-color ease 0.6s;
   cursor: pointer;
 }
 
-.modal__submit-button_active:hover {
+.form-modal__submit-button_active:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal__submit-button_inactive {
+.form-modal__submit-button_inactive {
   background-color: rgba(0, 0, 0, 0.3);
 }

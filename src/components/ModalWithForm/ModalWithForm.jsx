@@ -10,7 +10,10 @@ function ModalWithForm(props) {
     function onClose(event) {
       // covers 2 of 3 ways to close the modal window: keyboard and clicking outside the modal window (x button is the onClick event of said button)
       // console.log(event.key);
-      if (event.key === "Escape" || event.target.classList.contains("modal"))
+      if (
+        event.key === "Escape" ||
+        event.target.classList.contains("form-modal")
+      )
         props.onClose(); // this is the final step that would properly close the modal window, different from the wrapping func here
     }
 
@@ -23,14 +26,14 @@ function ModalWithForm(props) {
   return (
     <form
       action=""
-      className={`modal modal_type_${props.name}`}
+      className={`form-modal form-modal_type_${props.name}`}
       name={props.name}
     >
-      <div className="modal__window">
-        <p className="modal__title">{props.title}</p>
+      <div className="form-modal__window">
+        <p className="form-modal__title">{props.title}</p>
         <button
           type="button"
-          className="modal__close-button"
+          className="form-modal__close-button"
           onClick={props.onClose} // another way to close the modal window
         />
         {
@@ -40,7 +43,7 @@ function ModalWithForm(props) {
         }
         <button
           type="submit"
-          className="modal__submit-button modal__submit-button_inactive"
+          className="form-modal__submit-button form-modal__submit-button_inactive"
           disabled
         >
           {props.buttonText}
