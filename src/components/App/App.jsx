@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import getWeatherInfo from "/src/utils/weatherApi";
+import { defaultClothingItems } from "/src/utils/constants";
 
 function App() {
   const [openedModal, setOpenedModal] = useState(null);
@@ -13,9 +14,13 @@ function App() {
   const [weatherData, setWeatherData] = useState({});
 
   useEffect(() => {
-    getWeatherInfo().then((data) => {
-      setWeatherData(data);
-    });
+    getWeatherInfo()
+      .then((data) => {
+        setWeatherData(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   return (
@@ -25,11 +30,13 @@ function App() {
         openFormModal={() => setOpenedModal("add-clothes")}
       />
       <Main
-        weather="clear-day"
-        temperature={`${weatherData.temp}\u00b0C`}
+        weather={`${weatherData.weatherName}-${weatherData.time}`}
+        temperature={`${weatherData.temperature}\u00b0C`}
+        temperatureName={weatherData.temperatureName}
         openItemModal={() => {
           setOpenedModal("item-card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
         }}
+        clothesArray={defaultClothingItems}
         itemCardData={(card) => {
           setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main and then to the specific ItemCard, then return the card prop set (object) back to App, then pass it ItemModal's children elements by reading its state
         }}

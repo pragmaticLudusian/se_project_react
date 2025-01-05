@@ -2,7 +2,6 @@ import "./Main.css";
 import "/src/blocks/gallery.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "/src/utils/constants";
 
 function Main(props) {
   return (
@@ -12,9 +11,9 @@ function Main(props) {
         Today is {props.temperature} / You may want to wear:
       </p>
       <ul className="gallery">
-        {defaultClothingItems
+        {props.clothesArray
           .filter((item) => {
-            return item.weather !== ""; // filter is temp disabled
+            return item.weather === props.temperatureName; // filter is temp disabled
           })
           .map((item, i) => (
             <ItemCard
