@@ -15,6 +15,7 @@ function App() {
 
   useEffect(() => {
     getWeatherInfo().then((data) => {
+      console.log(data);
       setWeatherData(data);
     });
   }, []);
@@ -26,8 +27,8 @@ function App() {
         openFormModal={() => setFormModalOpened(true)}
       />
       <Main
-        weather="clear-day"
-        temperature={`${weatherData.temp}\u00b0C`}
+        weather={`${weatherData.weather}-${weatherData.time}`}
+        temperature={`${weatherData.temperature}\u00b0C`}
         openItemModal={() => {
           setItemModalOpened(true); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
         }}
