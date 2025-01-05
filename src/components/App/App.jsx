@@ -8,8 +8,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import getWeatherInfo from "/src/utils/weatherApi";
 
 function App() {
-  const [formModalOpened, setFormModalOpened] = useState(false);
-  const [itemModalOpened, setItemModalOpened] = useState(false);
+  const [openedModal, setOpenedModal] = useState(null);
   const [selectedItemCard, setItemCard] = useState(null); // just id goes here?
   const [weatherData, setWeatherData] = useState({});
 
@@ -23,26 +22,26 @@ function App() {
     <>
       <Header
         location={weatherData.city}
-        openFormModal={() => setFormModalOpened(true)}
+        openFormModal={() => setOpenedModal("add-clothes")}
       />
       <Main
         weather="clear-day"
         temperature={`${weatherData.temp}\u00b0C`}
         openItemModal={() => {
-          setItemModalOpened(true); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
+          setOpenedModal("item-card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
         }}
         itemCardData={(card) => {
           setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main and then to the specific ItemCard, then return the card prop set (object) back to App, then pass it ItemModal's children elements by reading its state
         }}
       />
       <Footer />
-      {formModalOpened && (
+      {openedModal === "add-clothes" && (
         <ModalWithForm
           title="New garment"
           name="add-clothes"
           buttonText="Add garment"
           onClose={() => {
-            setFormModalOpened(false);
+            setOpenedModal(null);
           }}
         >
           <fieldset className="form">
@@ -121,10 +120,10 @@ function App() {
           </fieldset>
         </ModalWithForm>
       )}
-      {itemModalOpened && (
+      {openedModal === "item-card" && (
         <ItemModal
           onClose={() => {
-            setItemModalOpened(false);
+            setOpenedModal(null);
           }} // must be an anon function, since a regular callback causes mass rerender issues and refuse to load with content even if forced
           // itemCardData={selectedItemCard} // prop would be needed if props.children isn't used
         >
