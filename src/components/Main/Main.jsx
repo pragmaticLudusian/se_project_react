@@ -4,6 +4,10 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
 function Main(props) {
+  const filteredArray = props.clothesArray.filter((item) => {
+    return item.weather === props.temperatureName;
+  });
+
   return (
     <div className="main">
       <WeatherCard weather={props.weather} temperature={props.temperature} />
@@ -11,20 +15,18 @@ function Main(props) {
         Today is {props.temperature} / You may want to wear:
       </p>
       <ul className="gallery">
-        {props.clothesArray
-          .filter((item) => {
-            return item.weather === props.temperatureName; // filter is temp disabled
-          })
-          .map((item, i) => (
-            <ItemCard
-              key={i}
-              name={item.name}
-              link={item.link}
-              weather={item.weather}
-              openItemModal={props.openItemModal} // props passed from App
-              itemCardData={props.itemCardData}
-            />
-          ))}
+        {filteredArray.size
+          ? filteredArray.map((item, i) => (
+              <ItemCard
+                key={i}
+                name={item.name}
+                link={item.link}
+                weather={item.weather}
+                openItemModal={props.openItemModal} // props passed from App
+                itemCardData={props.itemCardData}
+              />
+            ))
+          : "Sorry, but none available"}
       </ul>
     </div>
   );
