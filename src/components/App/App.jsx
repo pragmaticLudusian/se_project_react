@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="page__content">
       <Header
         location={weatherData.city}
         openFormModal={() => setOpenedModal("add-clothes")}
@@ -150,7 +150,7 @@ function App() {
           </div>
         </ItemModal>
       )}
-    </>
+    </div>
   );
 }
 

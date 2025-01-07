@@ -1,4 +1,8 @@
 .page {
+  background-color: #f3f3f3; /* affect entire page instead of leaving sidebars */
+}
+
+.page__content {
   margin: 0 auto;
   max-width: 1440px;
   font-family: "Cabinet Grotesk";
