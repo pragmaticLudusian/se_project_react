@@ -16,12 +16,43 @@
   margin: 0;
 }
 
-.header__add-clothes {
-  margin: 0 20px 0 auto;
+.header__add-clothes-btn {
   border: 0;
   padding: 0;
   background-color: transparent;
   font-weight: inherit;
   line-height: inherit;
   cursor: pointer;
+  margin: 0 20px 0 auto;
+}
+
+.header__user-container {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* relatively easy for use in mobile layout */
+}
+
+.header__username {
+  margin: 0;
+}
+
+.header__avatar {
+  width: 40px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.header__avatar_image {
+  background: url(/src/assets/avatar_image.png) no-repeat center/cover;
+}
+
+.header__avatar_text {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,6 +1,5 @@
 import "./Header.css";
-import "/src/blocks/user.css";
-import wtwrLogo from "/src/assets/logo.svg";
+import wtwrLogo from "../../assets/logo.svg";
 
 function Header(props) {
   const currentDate = new Date().toLocaleString("default", {
@@ -16,15 +15,19 @@ function Header(props) {
         {[currentDate, props.location].join(", ")}
       </p>
       <button
-        className="header__add-clothes"
+        className="header__add-clothes-btn"
         type="button"
         onClick={props.openFormModal}
       >
         + Add clothes
       </button>
-      <div className="user">
-        <p className="user__name">Terrence Tegegne</p>
-        <div className="user__avatar user__avatar_image">{!isImage && "T"}</div>
+      <div className="header__user-container">
+        <p className="header__username">Terrence Tegegne</p>
+        {isImage ? (
+          <div className="header__avatar header__avatar_image"></div>
+        ) : (
+          <div className="header__avatar header__avatar_text">T</div>
+        )}
       </div>
     </header>
   );
