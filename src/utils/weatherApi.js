@@ -9,21 +9,13 @@ export default function getWeatherInfo() {
       return Promise.reject(`error ${res.status}`);
     })
     .then((data) => {
-      const weather = data.weather[0].id;
-      const temperature = data.main.temp.toFixed(1);
-      const city = data.name;
-      const sunrise = data.sys.sunrise;
-      const sunset = data.sys.sunset;
-      return {
-        weather: getWeatherName(weather),
-        temperature,
-        temperatureName: getFuzzyTemperature(temperature),
-        city,
-        time: getTimeOfDay(sunrise, sunset),
-      };
-    })
-    .catch((err) => {
-      console.error(err);
+      const weatherObj = {};
+      weatherObj.weather = getWeatherName(data.weather[0].id);
+      weatherObj.temperature = data.main.temp.toFixed(1);
+      weatherObj.temperatureName = getFuzzyTemperature(weatherObj.temperature);
+      weatherObj.city = data.name;
+      weatherObj.time = getTimeOfDay(data.sys.sunrise, data.sys.sunset);
+      return weatherObj;
     });
 }
 
@@ -46,16 +38,10 @@ function getWeatherName(id) {
 }
 
 function getFuzzyTemperature(temp) {
-  switch (true) {
-    case temp > 35:
-      return "hot";
-    case temp > 25 && temp <= 35:
-      return "warm";
-    case temp > 15 && temp <= 25:
-      return "cool";
-    default:
-      return "cold";
-  }
+  if (temp > 35) return "hot";
+  else if (temp > 25 && temp <= 35) return "warm";
+  else if (temp > 15 && temp <= 25) return "cool";
+  else return "cold";
 }
 
 function getTimeOfDay(sunrise, sunset) {

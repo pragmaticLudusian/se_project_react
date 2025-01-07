@@ -15,7 +15,7 @@ function Main(props) {
         Today is {props.temperature} / You may want to wear:
       </p>
       <ul className="gallery">
-        {filteredArray.size
+        {filteredArray.size != 0
           ? filteredArray.map((item, i) => (
               <ItemCard
                 key={i}
@@ -26,7 +26,7 @@ function Main(props) {
                 itemCardData={props.itemCardData}
               />
             ))
-          : "Sorry, but none available"}
+          : "sorry, but none available"}
       </ul>
     </div>
   );
