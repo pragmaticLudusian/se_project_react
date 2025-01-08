@@ -1,5 +1,4 @@
 import "./Main.css";
-import "/src/blocks/gallery.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 
@@ -16,7 +15,7 @@ function Main(props) {
       </p>
       <section className="cards">
         <ul className="cards__grid">
-          {filteredArray.size != 0 // boolean output is explicit
+          {filteredArray.length
             ? filteredArray.map((item) => (
                 <ItemCard
                   key={item._id} // paramount for map, not so much inside
