@@ -34,7 +34,7 @@ function App() {
         temperature={weatherData.temperature}
         temperatureName={weatherData.temperatureName}
         openItemModal={() => {
-          setOpenedModal("item-card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
+          setOpenedModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
         }}
         clothesArray={defaultClothingItems}
         itemCardData={(card) => {
@@ -127,7 +127,7 @@ function App() {
           </fieldset>
         </ModalWithForm>
       )}
-      {openedModal === "item-card" && (
+      {openedModal === "card" && (
         <ItemModal
           onClose={() => {
             setOpenedModal(null);

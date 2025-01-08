@@ -14,20 +14,20 @@ function Main(props) {
       <p className="main__text">
         Today is {props.temperature}&deg;C / You may want to wear:
       </p>
-      <ul className="gallery">
-        {filteredArray.size != 0
-          ? filteredArray.map((item, i) => (
-              <ItemCard
-                key={i}
-                name={item.name}
-                link={item.link}
-                weather={item.weather}
-                openItemModal={props.openItemModal} // props passed from App
-                itemCardData={props.itemCardData}
-              />
-            ))
-          : "sorry, but none available"}
-      </ul>
+      <section className="cards">
+        <ul className="cards__grid">
+          {filteredArray.size != 0 // boolean output is explicit
+            ? filteredArray.map((item) => (
+                <ItemCard
+                  key={item._id} // paramount for map, not so much inside
+                  item={item} // all this would be destructured inside
+                  openItemModal={props.openItemModal} // props passed from App
+                  itemCardData={props.itemCardData}
+                />
+              ))
+            : "sorry, but none available"}
+        </ul>
+      </section>
     </main>
   );
 }
