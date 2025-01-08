@@ -31,7 +31,7 @@ function App() {
       />
       <Main
         weather={`${weatherData.weather}-${weatherData.time}`}
-        temperature={`${weatherData.temperature}\u00b0C`}
+        temperature={weatherData.temperature}
         temperatureName={weatherData.temperatureName}
         openItemModal={() => {
           setOpenedModal("item-card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler

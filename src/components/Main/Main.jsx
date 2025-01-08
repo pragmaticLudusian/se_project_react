@@ -9,10 +9,10 @@ function Main(props) {
   });
 
   return (
-    <div className="main">
+    <main className="main">
       <WeatherCard weather={props.weather} temperature={props.temperature} />
       <p className="main__text">
-        Today is {props.temperature} / You may want to wear:
+        Today is {props.temperature}&deg;C / You may want to wear:
       </p>
       <ul className="gallery">
         {filteredArray.size != 0
@@ -28,7 +28,7 @@ function Main(props) {
             ))
           : "sorry, but none available"}
       </ul>
-    </div>
+    </main>
   );
 }
 
