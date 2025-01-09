@@ -277,8 +277,8 @@ textarea {
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
+[type="number"]::-webkit-inner-spin-btn,
+[type="number"]::-webkit-outer-spin-btn {
   height: auto;
 }
 
@@ -305,7 +305,7 @@ textarea {
  * 2. Change font properties to `inherit` in Safari.
  */
 
-::-webkit-file-upload-button {
+::-webkit-file-upload-btn {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }

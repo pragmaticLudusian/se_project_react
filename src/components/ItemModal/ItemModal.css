@@ -22,7 +22,7 @@
   display: flex;
 }
 
-.item-modal__close-button {
+.item-modal__close-btn {
   position: absolute;
   top: 20px;
   right: 20px;

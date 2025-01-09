@@ -25,7 +25,7 @@ function ItemModal(props) {
       <div className="item-modal__window">
         <button
           type="button"
-          className="item-modal__close-button"
+          className="item-modal__close-btn"
           onClick={props.onClose}
         />
         {props.children}
