@@ -37,12 +37,3 @@
   background-color: #fff;
   /* cursor: initial; the whole card is clickable anyway */
 }
-
-.card__like {
-  padding: 0;
-  border: 0;
-  width: 18px;
-  height: 15px;
-  background: url("/src/assets/like.svg") no-repeat center/contain;
-  cursor: pointer;
-}

@@ -17,7 +17,6 @@ function ItemCard(props) {
       <img src={link} alt={name} className="card__image" />
       <div className="card__header">
         <div className="card__name">{name}</div>
-        <button type="button" className="card__like" />
       </div>
     </li>
   );
