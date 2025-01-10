@@ -9,8 +9,8 @@ import getWeatherInfo from "/src/utils/weatherApi";
 import { defaultClothingItems } from "/src/utils/constants";
 
 function App() {
-  const [openedModal, setOpenedModal] = useState(null);
-  const [selectedItemCard, setItemCard] = useState(null); // just id goes here?
+  const [openedModal, setOpenedModal] = useState("");
+  const [selectedItemCard, setItemCard] = useState(null);
   const [weatherData, setWeatherData] = useState({});
 
   useEffect(() => {
@@ -22,6 +22,10 @@ function App() {
         console.error(err);
       });
   }, []);
+
+  function handleModalClose() {
+    setOpenedModal("");
+  }
 
   return (
     <>
@@ -47,9 +51,7 @@ function App() {
           title="New garment"
           name="add-clothes"
           buttonText="Add garment"
-          onClose={() => {
-            setOpenedModal(null);
-          }}
+          onClose={handleModalClose}
         >
           <label className="form-modal__label">
             Name
@@ -131,25 +133,24 @@ function App() {
       )}
       {openedModal === "card" && (
         <ItemModal
-          onClose={() => {
-            setOpenedModal(null);
-          }} // must be an anon function, since a regular callback causes mass rerender issues and refuse to load with content even if forced
-          // itemCardData={selectedItemCard} // prop would be needed if props.children isn't used
+          onClose={handleModalClose}
+          // itemCardData={selectedItemCard} this prop would be needed if props.children isn't used, which is handled by App => Main => ItemCard anyways
         >
-          <div
-            className="item-modal__image"
-            style={{
-              background: `url(${new URL(
-                selectedItemCard.link,
-                import.meta.url
-              )}) no-repeat center/cover`,
-            }}
-          >
-            <div className="item-modal__name">{selectedItemCard.name}</div>
-          </div>
-          <div className="item-modal__description">
-            Weather: {selectedItemCard.weather}
-          </div>
+          <>
+            <div className="item-modal__card-container">
+              <img
+                src={selectedItemCard.link}
+                alt={selectedItemCard.name}
+                className="item-modal__image"
+              />
+              <div className="item-modal__header">
+                <div className="item-modal__name">{selectedItemCard.name}</div>
+              </div>
+            </div>
+            <div className="item-modal__description">
+              Weather: {selectedItemCard.weather}
+            </div>
+          </>
         </ItemModal>
       )}
     </>

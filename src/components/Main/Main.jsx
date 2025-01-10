@@ -20,8 +20,8 @@ function Main(props) {
                 <ItemCard
                   key={item._id} // paramount for map, not so much inside
                   item={item} // all this would be destructured inside
-                  openItemModal={props.openItemModal} // props passed from App
-                  itemCardData={props.itemCardData}
+                  openItemModal={props.openItemModal} // props passed...
+                  itemCardData={props.itemCardData} // from App
                 />
               ))
             : "sorry, but none available"}

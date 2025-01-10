@@ -1,26 +1,20 @@
 import "./ItemCard.css";
 
 function ItemCard(props) {
-  const { name, link } = props.item;
-  const bgImage = {
-    background: `url(${new URL(link, import.meta.url)}) no-repeat center/cover`,
-  }; // questionable if bg state supposed to be changed with inline styles
+  const { name, link } = props.item; // clicked card essentials
 
-  function handleCardClick(card) {
+  function handleCardClick() {
+    // onClick's the actual html-js event handler, so avoiding naming props after event handlers; pass the prop set object for itemCardData to use to return to Main and then to App and ItemModal
     props.openItemModal();
-    props.itemCardData(card);
+    props.itemCardData(props.item);
   }
 
   return (
-    <li className="card">
-      <img
-        src={link}
-        alt={name}
-        className="card__image"
-        onClick={() => {
-          handleCardClick(props.item);
-        }} // actual html-js event handler; pass the prop set object for itemCardData to use to return to Main and then to App and ItemModal
-      />
+    <li
+      className="card"
+      onClick={handleCardClick} // for performance reasons it's recommended to pass a callback instead of an anon/arrow func
+    >
+      <img src={link} alt={name} className="card__image" />
       <div className="card__header">
         <div className="card__name">{name}</div>
         <button type="button" className="card__like" />

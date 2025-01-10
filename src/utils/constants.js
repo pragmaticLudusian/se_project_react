@@ -2,8 +2,8 @@ export const defaultClothingItems = [
   {
     _id: 0,
     name: "Cap",
-    weather: "hot",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591",
+    weather: "cool",
+    link: "https://s3-alpha-sig.figma.com/img/a06c/ae33/3b1266412415ab8fd43e3d7f0fd17bbe?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=VhmhSCRB4lebJ~dwQI-4qRaW8XGSitNoTmwkNMtgqThHqFGM2Mv4AWyJXeKoBtVU5Ssa3snFfAfmhIOSk6aowVYZnxkVzlasx2dbHMaBfDtlI9f1T6taEkx~xC3i88657Seq94ONpin17daeRDyRjJOZ290m5igKagdC6iBqp6dCVPtTTP0qKIZeTAlu76ljUtMHuNWmNC-hy23h8DG3rDCctmhYfWtE-H-23Vi5xAu9xZLWLlwO132eqdyhhaC4~NRX0qU1zjaL3zG5U-YCS4F3uYFIs0HljsH7SiSDNrr44JI2j-P1u3vS8FCjxczDojzI2Kwm18-rRZIr~5zSdw__",
   },
   {
     _id: 1,
@@ -20,8 +20,8 @@ export const defaultClothingItems = [
   {
     _id: 3,
     name: "Sneakers",
-    weather: "cold",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f",
+    weather: "cool",
+    link: "https://s3-alpha-sig.figma.com/img/3d7d/4cfb/1bd02f20280afa626b78c2026585db9c?Expires=1737331200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=el~nax2XPQcIVBvziX7-SPEQ2VPHo6niMdw7WJMfc-~z0J64WSUiLg4dwXYN8q49uy5NicYcLShSUJx2txOd02nLF8JT0ss~DmyWOdt0smKZNOAdC6OPuWhrAw9mVFDwiXt2dCX9CAhj9wK-nR9MIUAZzNEA98G-G9AWWAvOqNB4kS44aoh8YIC7lxfUC-OaKMGyG1T18PUPzSgAgXXVD6UmXWFYfDpy8XfAWLDjhPJMX-lzMJ5SfPn5uByDrrxtqiw42i6TOcoNOfuv~pTvihLRFqd8rsVmOP~ufYyWMBIgDS0AHkrkVnoHQJXHzIIKxzh9mEZFlTCO4tQnRFUZoA__",
   },
   {
     _id: 4,
