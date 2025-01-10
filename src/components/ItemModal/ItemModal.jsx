@@ -30,7 +30,10 @@ function ItemModal(props) {
           className="item-modal__close-btn"
           onClick={props.onClose}
         />
-        {props.children}
+        {
+          // seems more convenient to format children - even in differing modals - passed as children from the App level
+          props.children
+        }
       </div>
     </div>
   );

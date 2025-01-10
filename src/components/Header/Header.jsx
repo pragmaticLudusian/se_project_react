@@ -23,11 +23,13 @@ function Header(props) {
       </button>
       <div className="header__user-container">
         <p className="header__username">Terrence Tegegne</p>
-        {isImage ? (
-          <div className="header__avatar header__avatar_image"></div>
-        ) : (
-          <div className="header__avatar header__avatar_text">T</div>
-        )}
+        {
+          isImage ? (
+            <div className="header__avatar header__avatar_image"></div>
+          ) : (
+            <div className="header__avatar header__avatar_text">T</div>
+          ) /* this is also test */
+        }
       </div>
     </header>
   );
