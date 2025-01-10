@@ -4,14 +4,14 @@ import ItemCard from "../ItemCard/ItemCard";
 
 function Main(props) {
   const filteredArray = props.clothesArray.filter((item) => {
-    return item.weather === props.temperatureName;
+    return item.weather === props.tempName;
   });
 
   return (
     <main className="main">
-      <WeatherCard weather={props.weather} temperature={props.temperature} />
+      <WeatherCard weather={props.weather} temp={props.temp} />
       <p className="main__text">
-        Today is {props.temperature}&deg;C / You may want to wear:
+        Today is {props.temp}&deg;C / You may want to wear:
       </p>
       <section className="cards">
         <ul className="cards__grid">

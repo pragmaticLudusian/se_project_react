@@ -1,6 +1,4 @@
-import { apiKey, latitude, longitude } from "./constants";
-
-export default function getWeatherInfo() {
+export default function getWeatherInfo({ latitude, longitude }, apiKey) {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
   )
@@ -11,8 +9,12 @@ export default function getWeatherInfo() {
     .then((data) => {
       const weatherObj = {};
       weatherObj.weather = getWeatherName(data.weather[0].id);
-      weatherObj.temperature = data.main.temp.toFixed(1);
-      weatherObj.temperatureName = getFuzzyTemperature(weatherObj.temperature);
+      weatherObj.temp = data.main.temp.toFixed(1);
+      /* weatherObj.temp = {
+        C: data.main.temp.toFixed(1),
+        F: (data.main.temp * (9 / 5) + 32).toFixed(1),
+      }; React doesn't compile with objects OR arrays when loading from scratch. Also sidenote: can't appear to pass objects as props unless it's an array or via createFragment() */
+      weatherObj.tempName = getFuzzyTemperature(weatherObj.temp.C);
       weatherObj.city = data.name;
       weatherObj.time = getTimeOfDay(data.sys.sunrise, data.sys.sunset);
       return weatherObj;
@@ -46,5 +48,5 @@ function getFuzzyTemperature(temp) {
 
 function getTimeOfDay(sunrise, sunset) {
   const time = Date.now() / 1000; // api is sec, data.now is msec
-  return time < sunrise || time > sunset ? "night" : "day";
+  return time < sunrise || time > sunset ? "night" : "day"; // string for status to be used in css className
 }
