@@ -3,10 +3,12 @@ import "./ModalWithForm.css";
 
 function ModalWithForm(props) {
   useEffect(() => {
-    window.addEventListener("keydown", onClose); // onClose here refers to the internal func WHEN it's time to close the modal window
-    document.querySelector(".form-modal").addEventListener("click", onClose); // components allow only one modal to be opened, so it should be unique enough
+    window.addEventListener("keydown", handleModalClose); // hMC here refers to the internal func WHEN it's time to close the modal window
+    document
+      .querySelector(".form-modal")
+      .addEventListener("click", handleModalClose); // components allow only one modal to be opened, so it should be unique enough
 
-    function onClose(event) {
+    function handleModalClose(event) {
       // covers 2 of 3 ways to close the modal window: keyboard and clicking outside the modal window (x button is the onClick event of said button)
       if (
         event.key === "Escape" ||
@@ -16,7 +18,7 @@ function ModalWithForm(props) {
     }
 
     return () => {
-      window.removeEventListener("keydown", onClose); // only event necessary to remove to avoid surplus keystrokes
+      window.removeEventListener("keydown", handleModalClose); // only event necessary to remove to avoid surplus keystrokes
       // console.log(document.forms[props.name]); // strangely gets invoked during mounting AND unmounting (but undef)
     };
   });

@@ -3,10 +3,12 @@ import "./ItemModal.css";
 
 function ItemModal(props) {
   useEffect(() => {
-    window.addEventListener("keydown", onClose);
-    document.querySelector(".item-modal").addEventListener("click", onClose);
+    window.addEventListener("keydown", handleModalClose);
+    document
+      .querySelector(".item-modal")
+      .addEventListener("click", handleModalClose);
 
-    function onClose(event) {
+    function handleModalClose(event) {
       if (
         event.key === "Escape" ||
         event.target.classList.contains("item-modal")
@@ -16,7 +18,7 @@ function ItemModal(props) {
     }
 
     return () => {
-      window.removeEventListener("keydown", onClose);
+      window.removeEventListener("keydown", handleModalClose);
     };
   });
 
