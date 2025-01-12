@@ -12,6 +12,7 @@ function App() {
   const [openedModal, setOpenedModal] = useState("");
   const [selectedItemCard, setItemCard] = useState(null);
   const [weatherData, setWeatherData] = useState({});
+  const [isMobileMenuOpened, setMobileMenuOpened] = useState(false);
 
   useEffect(() => {
     getWeatherInfo(location, apiKey)
