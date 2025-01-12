@@ -16,6 +16,57 @@
   margin: 0;
 }
 
+.header__menu-btn {
+  background: url("../../assets/menu.svg") no-repeat center/28px 12px, #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* appears to be default */
+  width: 44px;
+  height: 44px;
+  padding: 0; /* border-box + bg-size render this moot */
+  margin-left: auto;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  display: none; /* invisible in desktop */
+}
+
+.header__menu-close-btn {
+  background: url("../../assets/close.svg") no-repeat center/100%;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  cursor: pointer;
+}
+
+.header__user-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header__user-container_mobile {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  margin: 0 auto;
+  flex-direction: column-reverse;
+  gap: 24px;
+  padding: 60px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.header__user-container_desktop {
+  gap: 20px;
+}
+
 .header__add-clothes-btn {
   border: 0;
   padding: 0;
@@ -23,10 +74,9 @@
   font-weight: inherit;
   line-height: inherit;
   cursor: pointer;
-  margin: 0 20px 0 auto;
 }
 
-.header__user-container {
+.header__user {
   display: flex;
   align-items: center;
   gap: 12px; /* relatively easy for use in mobile layout */
@@ -41,6 +91,7 @@
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
 }
 
 .header__avatar_image {
@@ -55,4 +106,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 750px) {
+  .header__logo {
+    padding: 2px 0; /* prevent jitteriness when opening mobile menu */
+  }
+
+  .header__user-container_desktop {
+    display: none;
+  }
+
+  .header__menu-btn {
+    display: block;
+  }
 }

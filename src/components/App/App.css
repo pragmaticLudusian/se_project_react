@@ -4,6 +4,7 @@
 
 .page__content {
   margin: 0 auto;
+  min-width: 375px;
   max-width: 1440px;
   font-family: "Cabinet Grotesk";
   font-weight: 500;

@@ -1,12 +1,13 @@
 import "./Header.css";
 import wtwrLogo from "../../assets/logo.svg";
+import { useState } from "react";
 
 function Header(props) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  const isImage = true; // test
+  const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // since it's exclusive to this component, it's better than to pass a couple of props (function and state);
 
   return (
     <header className="header">
@@ -14,22 +15,40 @@ function Header(props) {
       <p className="header__time-and-place">
         {[currentDate, props.location].join(", ")}
       </p>
-      <button
-        className="header__add-clothes-btn"
-        type="button"
-        onClick={props.openFormModal}
+      {!isMobileMenuOpened && (
+        <button
+          type="button"
+          className="header__menu-btn"
+          onClick={() => {
+            setMobileMenuOpened(true);
+          }}
+        />
+      )}
+      <div
+        className={`header__user-container header__user-container_${
+          isMobileMenuOpened ? "mobile" : "desktop"
+        }`}
       >
-        + Add clothes
-      </button>
-      <div className="header__user-container">
-        <p className="header__username">Terrence Tegegne</p>
-        {
-          isImage ? (
-            <div className="header__avatar header__avatar_image"></div>
-          ) : (
-            <div className="header__avatar header__avatar_text">T</div>
-          ) /* this is also test */
-        }
+        {isMobileMenuOpened && (
+          <button
+            type="button"
+            className="header__menu-close-btn"
+            onClick={() => {
+              setMobileMenuOpened(false);
+            }}
+          />
+        )}
+        <button
+          className="header__add-clothes-btn"
+          type="button"
+          onClick={props.openFormModal}
+        >
+          + Add clothes
+        </button>
+        <div className="header__user">
+          <p className="header__username">Terrence Tegegne</p>
+          <div className="header__avatar header__avatar_image" />
+        </div>
       </div>
     </header>
   );
