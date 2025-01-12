@@ -1,15 +1,21 @@
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   font-weight: bold;
   font-size: 20px;
   padding: 32px 40px 28px;
 }
 
+.header__preamble-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .header__logo {
   width: 89px;
   height: 40px;
-  margin-right: 24px;
 }
 
 .header__time-and-place {
@@ -23,11 +29,11 @@
   width: 44px;
   height: 44px;
   padding: 0; /* border-box + bg-size render this moot */
-  margin-left: auto;
   border: 0;
   border-radius: 10px;
   cursor: pointer;
   display: none; /* invisible in desktop */
+  align-self: start;
 }
 
 .header__menu-close-btn {
@@ -45,7 +51,10 @@
 .header__user-container {
   display: flex;
   align-items: center;
-  margin-left: auto;
+}
+
+.header__user-container_desktop {
+  gap: 20px;
 }
 
 .header__user-container_mobile {
@@ -61,10 +70,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   border-radius: 10px;
-}
-
-.header__user-container_desktop {
-  gap: 20px;
+  z-index: 1;
 }
 
 .header__add-clothes-btn {
@@ -108,9 +114,19 @@
   align-items: center;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 749px) {
+  .header {
+    padding: 16px;
+  }
+
+  .header__preamble-container {
+    flex-direction: column;
+    align-items: start;
+    gap: 34px;
+  }
+
   .header__logo {
-    padding: 2px 0; /* prevent jitteriness when opening mobile menu */
+    padding: 2px 0;
   }
 
   .header__user-container_desktop {

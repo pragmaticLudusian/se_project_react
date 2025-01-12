@@ -11,10 +11,12 @@ function Header(props) {
 
   return (
     <header className="header">
-      <img src={wtwrLogo} alt="WTWR logo" className="header__logo" />
-      <p className="header__time-and-place">
-        {[currentDate, props.location].join(", ")}
-      </p>
+      <div className="header__preamble-container">
+        <img src={wtwrLogo} alt="WTWR logo" className="header__logo" />
+        <p className="header__time-and-place">
+          {[currentDate, props.location].join(", ")}
+        </p>
+      </div>
       {!isMobileMenuOpened && (
         <button
           type="button"
