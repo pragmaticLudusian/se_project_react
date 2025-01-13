@@ -5,7 +5,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
-import getWeatherInfo from "../../utils/weatherApi";
+import { fetchWeather, getWeatherInfo } from "../../utils/weatherApi";
 import { defaultClothingItems, location, apiKey } from "../../utils/constants";
 
 function App() {
@@ -15,9 +15,12 @@ function App() {
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
 
   useEffect(() => {
-    getWeatherInfo(location, apiKey)
+    fetchWeather(location, apiKey)
       .then((data) => {
-        setWeatherData(data);
+        return getWeatherInfo(data);
+      })
+      .then((filteredData) => {
+        setWeatherData(filteredData);
       })
       .catch((err) => {
         console.error(err);
