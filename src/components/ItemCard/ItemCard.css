@@ -1,6 +1,6 @@
 .card {
-  /* width: 325px; handled in gallery.css via grid auto-fit */
-  height: 328px;
+  /* width: 325px; delegated to grid layout */
+  /* height: 328px; @Main.css */
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 20px;
   background-color: #e9e9e9;
@@ -40,7 +40,7 @@
 
 @media screen and (max-width: 749px) {
   .card {
-    height: 162px;
+    /* height: 162px; Delegated to grid layout @Main.css */
   }
 
   .card__header {
