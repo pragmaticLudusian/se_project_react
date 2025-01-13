@@ -9,6 +9,7 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(4px);
+  z-index: 2;
 }
 
 .form-modal__window {
@@ -24,6 +25,7 @@
 
 .form-modal__title {
   margin: 0 0 24px;
+  font-size: 16px;
 }
 
 .form-modal__close-btn {
@@ -111,4 +113,38 @@
 
 .form-modal__submit-btn_inactive {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 749px) {
+  .form-modal {
+    align-items: end;
+  }
+
+  .form-modal__window {
+    padding: 32px 16px;
+    flex-basis: 440px; /* with inputs' width at 100%, the window will always shrink when possible; this inverts the behavior of shrinking and grows up to this size, then shrink last */
+  }
+
+  .form-modal__title {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 37px;
+  }
+
+  .form-modal__close-btn {
+    top: 20px;
+    right: 20px;
+    background-size: 100%;
+    opacity: 1;
+  }
+
+  .form-modal__input {
+    width: 100%;
+  }
+
+  .form-modal__submit-btn {
+    margin: 31px 0;
+    width: 100%;
+    padding: 12px 0;
+  }
 }
