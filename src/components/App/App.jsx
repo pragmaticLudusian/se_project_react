@@ -13,6 +13,7 @@ function App() {
   const [selectedItemCard, setItemCard] = useState(null);
   const [weatherData, setWeatherData] = useState({});
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   useEffect(() => {
     fetchWeather(location, apiKey)
@@ -47,7 +48,7 @@ function App() {
         openItemModal={() => {
           handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
         }}
-        clothesArray={defaultClothingItems}
+        clothesArray={clothingItems}
         itemCardData={(card) => {
           setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main and then to the specific ItemCard, then return the card prop set (object) back to App, then pass it ItemModal's children elements by reading its state
         }}
