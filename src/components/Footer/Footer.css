@@ -8,3 +8,9 @@
 .footer__copyright {
   margin: 0;
 }
+
+@media screen and (max-width: 749px) {
+  .footer {
+    padding: 83px 16px 20px;
+  }
+}

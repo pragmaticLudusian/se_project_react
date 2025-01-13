@@ -38,7 +38,7 @@
   /* cursor: initial; the whole card is clickable anyway */
 }
 
-@media screen and (max-width: 733px) {
+@media screen and (max-width: 749px) {
   .card {
     height: 162px;
   }
