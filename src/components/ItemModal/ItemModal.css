@@ -12,14 +12,15 @@
 }
 
 .item-modal__window {
+  display: flex;
+  gap: 28px;
   position: relative;
   background-color: #fff;
   border-radius: 20px;
   font-weight: bold;
-  font-size: 16px;
   padding: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  display: flex;
+  overflow: hidden;
 }
 
 .item-modal__close-btn {
@@ -41,7 +42,7 @@
   width: 325px;
   height: 328px;
   border-radius: 16px;
-  overflow: hidden;
+  font-size: 16px;
 }
 
 .item-modal__image {
@@ -57,7 +58,7 @@
   justify-content: center;
   align-items: baseline;
   position: absolute;
-  top: 19px;
+  top: 0;
   left: 0;
 }
 
@@ -66,11 +67,66 @@
   padding: 2px 12px;
   border-radius: 4px;
   background-color: #fff;
+  margin: 19px 0 0;
+}
+
+.item-modal__text-container {
+  width: calc(670px - 325px - (20px * 2));
+  height: 328px;
+  font-size: 20px;
 }
 
 .item-modal__description {
-  width: calc(670px - 325px - (20px * 2));
-  height: 328px;
-  padding: 13px 0 0 28px;
-  font-size: 20px;
+  margin: 13px 0 0;
+}
+
+@media screen and (max-width: 749px) {
+  .item-modal__window {
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+
+  .item-modal__close-btn {
+    top: 12px;
+    right: 12px;
+    background-size: 100%;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .item-modal__card-container {
+    display: flex;
+    flex-direction: column;
+    width: 343px;
+    height: unset; /* container originally has both image and name, but in mobile they're separate */
+    font-size: 20px;
+  }
+
+  .item-modal__image {
+    width: 343px;
+    height: 343px;
+  }
+
+  .item-modal__header {
+    position: static;
+    justify-content: start;
+  }
+
+  .item-modal__name {
+    padding: 0;
+    margin: 20px 0 0 20px;
+    color: #000;
+    background-color: transparent;
+    width: 100%;
+  }
+
+  .item-modal__text-container {
+    width: 100%;
+    height: 120px;
+  }
+
+  .item-modal__description {
+    margin: 12px 0 0 20px;
+  }
 }

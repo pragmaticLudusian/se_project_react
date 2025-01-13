@@ -144,11 +144,13 @@ function App() {
                 className="item-modal__image"
               />
               <div className="item-modal__header">
-                <div className="item-modal__name">{selectedItemCard.name}</div>
+                <p className="item-modal__name">{selectedItemCard.name}</p>
               </div>
             </div>
-            <div className="item-modal__description">
-              Weather: {selectedItemCard.weather}
+            <div className="item-modal__text-container">
+              <p className="item-modal__description">
+                Weather: {selectedItemCard.weather}
+              </p>
             </div>
           </>
         </ItemModal>
