@@ -1,13 +1,33 @@
 import "./Header.css";
 import wtwrLogo from "../../assets/logo.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header(props) {
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
-  });
+  const date = new Date();
+
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // since it's exclusive to this component, it's better than to pass a couple of props (function and state);
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    function handleDateFormat() {
+      setCurrentDate(
+        date.toLocaleString("default", {
+          month:
+            window.innerWidth >= 750 && window.innerWidth < 800
+              ? "short"
+              : "long",
+          day: "numeric",
+        })
+      );
+    }
+
+    window.addEventListener("resize", handleDateFormat); // alt to @media query
+    if (!currentDate) handleDateFormat(); // just in case, render ONLY during mounting phase
+
+    return () => {
+      window.removeEventListener("resize", handleDateFormat);
+    };
+  });
 
   return (
     <header className="header">
