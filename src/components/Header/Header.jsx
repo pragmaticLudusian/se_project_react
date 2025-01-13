@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 function Header(props) {
   const date = new Date();
 
-  const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // since it's exclusive to this component, it's better than to pass a couple of props (function and state);
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
@@ -27,7 +26,7 @@ function Header(props) {
     return () => {
       window.removeEventListener("resize", handleDateFormat);
     };
-  });
+  }, [window.innerWidth]);
 
   return (
     <header className="header">
@@ -37,26 +36,26 @@ function Header(props) {
           {[currentDate, props.location].join(", ")}
         </p>
       </div>
-      {!isMobileMenuOpened && (
+      {!props.isMobileMenuOpened && (
         <button
           type="button"
           className="header__menu-btn"
           onClick={() => {
-            setMobileMenuOpened(true);
+            props.setMobileMenuOpened(true);
           }}
         />
       )}
       <div
         className={`header__user-container header__user-container_${
-          isMobileMenuOpened ? "mobile" : "desktop"
+          props.isMobileMenuOpened ? "mobile" : "desktop"
         }`}
       >
-        {isMobileMenuOpened && (
+        {props.isMobileMenuOpened && (
           <button
             type="button"
             className="header__menu-close-btn"
             onClick={() => {
-              setMobileMenuOpened(false);
+              props.setMobileMenuOpened(false);
             }}
           />
         )}

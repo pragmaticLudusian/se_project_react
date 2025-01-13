@@ -12,6 +12,7 @@ function App() {
   const [openedModal, setOpenedModal] = useState("");
   const [selectedItemCard, setItemCard] = useState(null);
   const [weatherData, setWeatherData] = useState({});
+  const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
 
   useEffect(() => {
     getWeatherInfo(location, apiKey)
@@ -23,22 +24,25 @@ function App() {
       });
   }, []);
 
-  function handleModalClose() {
-    setOpenedModal("");
+  function handleModal(window = "") {
+    setOpenedModal(window);
+    window && setMobileMenuOpened(false);
   }
 
   return (
     <>
       <Header
         location={weatherData.city}
-        openFormModal={() => setOpenedModal("add-clothes")}
+        openFormModal={() => handleModal("add-clothes")}
+        isMobileMenuOpened={isMobileMenuOpened}
+        setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
       />
       <Main
         weather={`${weatherData.weather}-${weatherData.time}`}
         temp={weatherData.temp}
         tempName={weatherData.tempName}
         openItemModal={() => {
-          setOpenedModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
+          handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
         }}
         clothesArray={defaultClothingItems}
         itemCardData={(card) => {
@@ -51,7 +55,7 @@ function App() {
           title="New garment"
           name="add-clothes"
           buttonText="Add garment"
-          onClose={handleModalClose}
+          onClose={handleModal}
         >
           <label className="form-modal__label">
             Name
@@ -133,7 +137,7 @@ function App() {
       )}
       {openedModal === "card" && (
         <ItemModal
-          onClose={handleModalClose}
+          onClose={handleModal}
           // itemCardData={selectedItemCard} this prop would be needed if props.children isn't used, which is handled by App => Main => ItemCard anyways
         >
           <>
