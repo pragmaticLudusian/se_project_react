@@ -17,3 +17,55 @@
   gap: 20px;
   justify-content: center;
 }
+
+.cards__random-btn {
+  /* width: calc(343px - 8px - 12px); */
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 133px 12px 112px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 20px auto 0;
+  display: none;
+}
+
+.cards__random-btn_active {
+  background-color: #000;
+  transition: background-color ease 0.6s;
+  cursor: pointer;
+}
+
+.cards__random-btn_active:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.cards__random-btn_inactive {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cards__random-img {
+  width: 12px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 733px) {
+  .main {
+    padding: 0 16px;
+  }
+
+  .main__text {
+    margin: 32px 0 20px;
+  }
+
+  .cards__grid {
+    grid-template-columns: repeat(auto-fit, 164px);
+    gap: 16px 15px;
+  }
+
+  .cards__random-btn {
+    display: block;
+  }
+}

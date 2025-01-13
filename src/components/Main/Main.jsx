@@ -1,6 +1,7 @@
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
+import reroll from "../../assets/reroll.svg";
 
 function Main(props) {
   const filteredArray = props.clothesArray.filter((item) => {
@@ -26,6 +27,17 @@ function Main(props) {
               ))
             : "sorry, but none available"}
         </ul>
+        <button
+          type="button"
+          className="cards__random-btn cards__random-btn_active"
+        >
+          <img
+            src={reroll}
+            alt="&circlearrowright;"
+            className="cards__random-img"
+          />
+          Randomize
+        </button>
       </section>
     </main>
   );

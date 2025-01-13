@@ -37,3 +37,13 @@
   background-color: #fff;
   /* cursor: initial; the whole card is clickable anyway */
 }
+
+@media screen and (max-width: 733px) {
+  .card {
+    height: 162px;
+  }
+
+  .card__header {
+    top: 7px;
+  }
+}
