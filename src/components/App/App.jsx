@@ -23,12 +23,11 @@ function App() {
       .then((filteredData) => {
         setWeatherData(filteredData);
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch(console.error);
   }, []);
 
   function handleModal(window = "") {
+    // if just called, simply close any active modal window - perfect for using a callback
     setOpenedModal(window);
     window && setMobileMenuOpened(false);
   }
