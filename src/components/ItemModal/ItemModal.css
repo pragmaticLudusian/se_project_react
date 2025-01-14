@@ -41,7 +41,6 @@
   position: relative;
   width: 325px;
   height: 328px;
-  border-radius: 16px;
   font-size: 16px;
 }
 
@@ -50,6 +49,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 16px;
 }
 
 .item-modal__header {
@@ -106,6 +106,7 @@
   .item-modal__image {
     width: 343px;
     height: 343px;
+    border-radius: 0;
   }
 
   .item-modal__header {
@@ -119,6 +120,7 @@
     color: #000;
     background-color: transparent;
     width: 100%;
+    border-radius: 0;
   }
 
   .item-modal__text-container {
