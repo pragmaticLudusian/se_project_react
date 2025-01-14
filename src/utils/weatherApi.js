@@ -15,7 +15,7 @@ export function getWeatherInfo(data) {
     C: data.main.temp.toFixed(1),
     F: (data.main.temp * (9 / 5) + 32).toFixed(1),
   }; // React doesn't compile with objects OR arrays when loading from scratch. Also sidenote: can't appear to pass objects as props unless it's an array or via createFragment() */
-  weatherObj.tempName = getFuzzyTemperature(weatherObj.temp.C);
+  weatherObj.tempName = getFuzzyTemperature(weatherObj.temp);
   weatherObj.city = data.name;
   weatherObj.time = getTimeOfDay(data.sys.sunrise, data.sys.sunset);
   return weatherObj;
