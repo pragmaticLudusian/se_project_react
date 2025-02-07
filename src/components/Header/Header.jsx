@@ -1,5 +1,6 @@
 import "./Header.css";
 import wtwrLogo from "../../assets/logo.svg";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useEffect, useState } from "react";
 
 function Header(props) {
@@ -59,6 +60,7 @@ function Header(props) {
             }}
           />
         )}
+        <ToggleSwitch />
         <button
           className="header__add-clothes-btn"
           type="button"
