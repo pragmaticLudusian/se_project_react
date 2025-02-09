@@ -15,7 +15,7 @@ function App() {
   const [weatherData, setWeatherData] = useState({}); // instead of an empty obj, it could have the structure all set up by default. alt. use var? or obj && obj.key
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("C");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   useEffect(() => {
     fetchWeather(location, apiKey)
@@ -62,7 +62,7 @@ function App() {
           }}
           clothesArray={clothingItems}
           itemCardData={(card) => {
-            setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main and then to the specific ItemCard, then return the card prop set (object) back to App, then pass it ItemModal's children elements by reading its state
+            setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main, then to the specific ItemCard, then return the card prop set (object) back to App, and then pass it ItemModal's children elements by reading its state
           }}
         />
         <Footer />

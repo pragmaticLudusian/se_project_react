@@ -12,6 +12,7 @@ function ToggleSwitch() {
       <input
         type="checkbox"
         className="toggle-switch__checkbox"
+        checked={currentTemperatureUnit === "F"} // supports parent state default (C=false, F=true)
         onChange={handleToggleSwitchChange}
       />
       <div className="toggle-switch__button" />
