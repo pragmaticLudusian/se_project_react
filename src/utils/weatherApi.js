@@ -10,12 +10,12 @@ export function fetchWeather({ latitude, longitude }, apiKey) {
 export function getWeatherInfo(data) {
   const weatherObj = {};
   weatherObj.weather = getWeatherName(data.weather[0].id);
-  weatherObj.temp = data.main.temp.toFixed(1);
-  /* weatherObj.temp = {
+  // weatherObj.temp = data.main.temp.toFixed(1);
+  weatherObj.temp = {
     C: data.main.temp.toFixed(1),
     F: (data.main.temp * (9 / 5) + 32).toFixed(1),
-  }; // React doesn't compile with objects OR arrays when loading from scratch. Also sidenote: can't appear to pass objects as props unless it's an array or via createFragment() */
-  weatherObj.tempName = getFuzzyTemperature(weatherObj.temp);
+  }; // React doesn't compile with objects OR arrays when loading from scratch. Also sidenote: can't appear to pass objects as props unless it's an array or via createFragment(). context is the solution????
+  weatherObj.tempName = getFuzzyTemperature(weatherObj.temp.C);
   weatherObj.city = data.name;
   weatherObj.time = getTimeOfDay(data.sys.sunrise, data.sys.sunset);
   return weatherObj;

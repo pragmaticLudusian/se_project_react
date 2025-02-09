@@ -1,18 +1,22 @@
-import "./Main.css";
+import { useContext } from "react";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import reroll from "../../assets/reroll.svg";
+import { CurrentTemperatureUnitContext } from "../../contexts/currentTemperatureUnitContext";
+import "./Main.css";
 
 function Main(props) {
   const filteredArray = props.clothesArray.filter((item) => {
     return item.weather === props.tempName;
   });
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
     <main className="main">
       <WeatherCard weather={props.weather} temp={props.temp} />
       <p className="main__text">
-        Today is {props.temp}&deg;C / You may want to wear:
+        Today is {props.temp}&deg;{currentTemperatureUnit} / You may want to
+        wear:
       </p>
       <section className="cards">
         <ul className="cards__grid">
