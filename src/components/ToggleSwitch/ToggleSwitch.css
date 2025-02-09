@@ -7,7 +7,7 @@
   color: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   display: flex;
-  /* justify-content: space-between; unnecessary with 2 elems taking 50% space each */
+  justify-content: center; /*only needed for the 'floating' checkbox since the option elems are taking the entire width */
   align-items: center;
 }
 
@@ -25,7 +25,9 @@
 }
 
 .toggle-switch__checkbox {
-  display: none;
+  /* display: none; wouldn't make the element tabbable w/out simulated kbd events */
+  opacity: 0;
+  position: absolute;
 }
 
 .toggle-switch__checkbox:checked + .toggle-switch__button {
@@ -42,7 +44,7 @@
   height: 32px;
   border-radius: 50%;
   background-color: #000;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .toggle-switch__option {
@@ -51,6 +53,7 @@
   z-index: 1;
   font-size: 14px;
   line-height: 1.25;
+  transition: color 0.25s;
 }
 
 .toggle-switch__option_active {

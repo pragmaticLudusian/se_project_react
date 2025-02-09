@@ -12,7 +12,7 @@ function ToggleSwitch() {
       <input
         type="checkbox"
         className="toggle-switch__checkbox"
-        onClick={handleToggleSwitchChange}
+        onChange={handleToggleSwitchChange}
       />
       <div className="toggle-switch__button" />
       <span
