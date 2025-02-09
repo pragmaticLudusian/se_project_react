@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   const [openedModal, setOpenedModal] = useState("");
   const [selectedItemCard, setItemCard] = useState(null);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({}); // instead of an empty obj, it could have the structure all set up by default. alt. use var? or obj && obj.key
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("C");
@@ -54,7 +54,8 @@ function App() {
         />
         <Main
           weather={`${weatherData.weather}-${weatherData.time}`}
-          temp={weatherData.temp && weatherData.temp[currentTemperatureUnit]} // passing an obj isn't possible as a child and neither is a property of said obj due to undef on page load. setting another state/ref as just the temperature to handle results in a delay. solution was to use the var check before passing the prop onwards
+          temp={weatherData.temp && weatherData.temp[currentTemperatureUnit]} // ensures soft initializing of object before passing a specific temp unit.
+          // info: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
           tempName={weatherData.tempName}
           openItemModal={() => {
             handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
