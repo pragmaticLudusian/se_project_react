@@ -10,11 +10,11 @@ export function fetchWeather({ latitude, longitude }, apiKey) {
 export function getWeatherInfo(data) {
   const weatherObj = {};
   weatherObj.weather = getWeatherName(data.weather[0].id);
-  weatherObj.temp = {
+  weatherObj.temperature = {
     C: data.main.temp.toFixed(1),
     F: (data.main.temp * (9 / 5) + 32).toFixed(1),
   }; // w/out a state's template obj being set, it would render as undef initially
-  weatherObj.tempName = getFuzzyTemperature(weatherObj.temp.C);
+  weatherObj.temperatureName = getFuzzyTemperature(weatherObj.temperature.C); // default to C
   weatherObj.city = data.name;
   weatherObj.time = getTimeOfDay(data.sys.sunrise, data.sys.sunset);
   return weatherObj;

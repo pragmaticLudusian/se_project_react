@@ -7,7 +7,7 @@ function WeatherCard(props) {
 
   return (
     <section className={`weather-card weather-card_type_${props.weather}`}>
-      {props.temp}&deg;{currentTemperatureUnit}
+      {props.temperature}&deg;{currentTemperatureUnit}
     </section>
   );
 }

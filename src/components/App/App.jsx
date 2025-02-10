@@ -54,9 +54,12 @@ function App() {
         />
         <Main
           weather={`${weatherData.weather}-${weatherData.time}`}
-          temp={weatherData.temp && weatherData.temp[currentTemperatureUnit]} // ensures soft initializing of object before passing a specific temp unit.
-          // info: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
-          tempName={weatherData.tempName}
+          temperature={
+            weatherData.temperature &&
+            weatherData.temperature[currentTemperatureUnit]
+          } // ensures soft initializing of object before passing a specific temp unit.
+          // note: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
+          temperatureName={weatherData.temperatureName}
           openItemModal={() => {
             handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
           }}

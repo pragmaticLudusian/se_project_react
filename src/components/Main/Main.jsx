@@ -7,16 +7,16 @@ import "./Main.css";
 
 function Main(props) {
   const filteredArray = props.clothesArray.filter((item) => {
-    return item.weather === props.tempName;
+    return item.weather === props.temperatureName;
   });
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   return (
     <main className="main">
-      <WeatherCard weather={props.weather} temp={props.temp} />
+      <WeatherCard weather={props.weather} temperature={props.temperature} />
       <p className="main__text">
-        Today is {props.temp}&deg;{currentTemperatureUnit} / You may want to
-        wear:
+        Today is {props.temperature}&deg;{currentTemperatureUnit} / You may want
+        to wear:
       </p>
       <section className="cards">
         <ul className="cards__grid">
