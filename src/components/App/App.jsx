@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
@@ -52,22 +54,30 @@ function App() {
           setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
           // toggleTempUnit={handleToggleSwitchChange} not needed when using context
         />
-        <Main
-          weather={`${weatherData.weather}-${weatherData.time}`}
-          temperature={
-            weatherData.temperature &&
-            weatherData.temperature[currentTemperatureUnit]
-          } // ensures soft initializing of object before passing a specific temp unit.
-          // note: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
-          temperatureName={weatherData.temperatureName}
-          openItemModal={() => {
-            handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
-          }}
-          clothesArray={clothingItems}
-          itemCardData={(card) => {
-            setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main, then to the specific ItemCard, then return the card prop set (object) back to App, and then pass it ItemModal's children elements by reading its state
-          }}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                weather={`${weatherData.weather}-${weatherData.time}`}
+                temperature={
+                  weatherData.temperature &&
+                  weatherData.temperature[currentTemperatureUnit]
+                } // ensures soft initializing of object before passing a specific temp unit.
+                // note: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
+                temperatureName={weatherData.temperatureName}
+                openItemModal={() => {
+                  handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
+                }}
+                clothesArray={clothingItems}
+                itemCardData={(card) => {
+                  setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main, then to the specific ItemCard, then return the card prop set (object) back to App, and then pass it ItemModal's children elements by reading its state
+                }}
+              />
+            }
+          />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
         <Footer />
         {openedModal === "add-clothes" && (
           <ModalWithForm
