@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center; /*only needed for the 'floating' checkbox since the option elems are taking the entire width */
   align-items: center;
+  transition: 0.25s;
 }
 
 .toggle-switch:hover {
