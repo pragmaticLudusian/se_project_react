@@ -1,7 +1,8 @@
-import "./Header.css";
 import wtwrLogo from "../../assets/logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Header.css";
 
 function Header(props) {
   const date = new Date();
@@ -32,7 +33,9 @@ function Header(props) {
   return (
     <header className="header">
       <div className="header__preamble-container">
-        <img src={wtwrLogo} alt="WTWR logo" className="header__logo" />
+        <Link to="/">
+          <img src={wtwrLogo} alt="WTWR logo" className="header__logo" />
+        </Link>
         <p className="header__time-and-place">
           {[currentDate, props.location].join(", ")}
         </p>
@@ -69,8 +72,12 @@ function Header(props) {
           + Add clothes
         </button>
         <div className="header__user">
-          <p className="header__username">Terrence Tegegne</p>
-          <div className="header__avatar header__avatar_image" />
+          <Link to="/profile">
+            <p className="header__username">Terrence Tegegne</p>
+          </Link>
+          <Link to="/profile">
+            <div className="header__avatar header__avatar_image" />
+          </Link>
         </div>
       </div>
     </header>

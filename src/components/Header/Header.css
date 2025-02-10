@@ -87,6 +87,12 @@
   gap: 12px; /* relatively easy for use in mobile layout */
 }
 
+.header__user a {
+  /* react Link creates an unclassed a tag */
+  color: inherit;
+  text-decoration: none;
+}
+
 .header__username {
   margin: 0;
 }
