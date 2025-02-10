@@ -2,7 +2,7 @@ import { useContext } from "react";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import reroll from "../../assets/reroll.svg";
-import { CurrentTemperatureUnitContext } from "../../contexts/currentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import "./Main.css";
 
 function Main(props) {

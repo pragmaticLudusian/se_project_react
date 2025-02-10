@@ -6,7 +6,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { defaultClothingItems, location, apiKey } from "../../utils/constants";
 import { fetchWeather, getWeatherInfo } from "../../utils/weatherApi";
-import { CurrentTemperatureUnitContext } from "../../contexts/currentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import "./App.css";
 
 function App() {
