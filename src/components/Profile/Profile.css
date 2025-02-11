@@ -1,4 +1,8 @@
 .profile {
-  padding: 0 40px;
+  padding: 47px 40px 80px;
   display: flex;
+  align-items: start;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.25;
 }

@@ -1,3 +1,21 @@
 .side-bar {
   flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.side-bar__avatar {
+  width: 56px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.side-bar__avatar_image {
+  background: url(/src/assets/avatar_image.png) no-repeat center/cover;
+}
+
+.side-bar__username {
+  margin: 0;
 }
