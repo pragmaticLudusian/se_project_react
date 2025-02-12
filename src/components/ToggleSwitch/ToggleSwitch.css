@@ -4,7 +4,7 @@
   width: 56px;
   height: 28px;
   border: 2px solid #7e7e7e;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0 0 0 / 0.5);
   border-radius: 20px;
   display: flex;
   justify-content: center; /*only needed for the 'floating' checkbox since the option elems are taking the entire width */

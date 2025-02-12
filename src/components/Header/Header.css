@@ -24,7 +24,7 @@
 
 .header__menu-btn {
   background: url("../../assets/menu.svg") no-repeat center/28px 12px, #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0 0 0 / 0.1);
   box-sizing: border-box; /* appears to be default */
   width: 44px;
   height: 44px;
@@ -67,7 +67,7 @@
   flex-direction: column-reverse;
   gap: 24px;
   padding: 60px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0 0 0 / 0.1);
   background-color: #fff;
   border-radius: 10px;
 }
@@ -101,7 +101,7 @@
   width: 40px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0 0 0 / 0.5);
   box-sizing: border-box;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .header__avatar_text {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0 0 0 / 0.2);
   color: #fff;
   font-size: 20px;
   line-height: 1.2;

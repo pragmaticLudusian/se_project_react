@@ -40,11 +40,11 @@
 }
 
 .cards__random-btn_active:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0 0 0 / 0.6);
 }
 
 .cards__random-btn_inactive {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0 0 0 / 0.3);
 }
 
 .cards__random-img {
