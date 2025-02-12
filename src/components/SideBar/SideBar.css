@@ -1,5 +1,6 @@
 .side-bar {
-  flex-grow: 1;
+  flex-grow: 1; /* take up as much of the page, limited to clothes grid */
+  flex-shrink: 0; /* when page shrinks, leave elements as they are */
   display: flex;
   align-items: center;
   gap: 16px;

@@ -1,11 +1,27 @@
 .clothes {
-  flex-grow: 3;
+  flex-basis: 1015px; /* while the sidebar takes as much space as it can, constrain the grid to accommodate 3 columns */
 }
 
 .clothes__header {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.clothes__header-text {
+  margin: 0;
+  height: 56px;
+  align-content: center;
+}
+
+.clothes__add-btn {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  font-weight: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  color: rgba(0 0 0 / 0.6);
 }
 
 .clothes__grid {

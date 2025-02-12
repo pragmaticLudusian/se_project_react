@@ -16,12 +16,14 @@ function ClothesSection(props) {
       </div>
       <ul className="clothes__grid">
         {props.clothesArray.map((item) => {
-          <ItemCard
-            key={item._id}
-            item={item}
-            openItemModal={props.openItemModal}
-            itemCardData={props.itemCardData}
-          />;
+          return (
+            <ItemCard
+              key={item._id}
+              item={item}
+              openItemModal={props.openItemModal}
+              itemCardData={props.itemCardData}
+            />
+          );
         })}
       </ul>
     </section>

@@ -21,14 +21,16 @@ function Main(props) {
       <section className="cards">
         <ul className="cards__grid">
           {filteredArray.length
-            ? filteredArray.map((item) => (
-                <ItemCard
-                  key={item._id} // paramount for map, not so much inside
-                  item={item} // all this would be destructured inside
-                  openItemModal={props.openItemModal} // props passed...
-                  itemCardData={props.itemCardData} // from App
-                />
-              ))
+            ? filteredArray.map((item) => {
+                return (
+                  <ItemCard
+                    key={item._id} // paramount for map, not so much inside
+                    item={item} // all this would be destructured inside
+                    openItemModal={props.openItemModal} // props passed...
+                    itemCardData={props.itemCardData} // from App
+                  />
+                ); // the return statement is optional in the context of ternary ops, where otherwise it's mandatory in map blocks
+              })
             : "sorry, but none available"}
         </ul>
         <button

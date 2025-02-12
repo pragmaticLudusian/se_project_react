@@ -2,6 +2,7 @@
   padding: 47px 40px 80px;
   display: flex;
   align-items: start;
+  gap: 18px; /* arbitrary and is more for sidebar's benefit */
   font-weight: bold;
   font-size: 20px;
   line-height: 1.25;
