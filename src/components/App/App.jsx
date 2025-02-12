@@ -76,7 +76,17 @@ function App() {
               />
             }
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                clothesArray={clothingItems}
+                openFormModal={() => handleModal("add-clothes")}
+                openItemModal={() => handleModal("card")}
+                itemCardData={(card) => setItemCard(card)}
+              />
+            }
+          />
         </Routes>
         <Footer />
         {openedModal === "add-clothes" && (

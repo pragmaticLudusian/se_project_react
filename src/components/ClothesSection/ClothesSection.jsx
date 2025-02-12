@@ -1,7 +1,31 @@
+import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-function ClothesSection() {
-  return <section className="clothes-section">Cloth</section>;
+function ClothesSection(props) {
+  return (
+    <section className="clothes">
+      <div className="clothes__header">
+        <p className="clothes__header-text">Your items</p>
+        <button
+          type="button"
+          className="clothes__add-btn"
+          onClick={props.openFormModal}
+        >
+          + Add new
+        </button>
+      </div>
+      <ul className="clothes__grid">
+        {props.clothesArray.map((item) => {
+          <ItemCard
+            key={item._id}
+            item={item}
+            openItemModal={props.openItemModal}
+            itemCardData={props.itemCardData}
+          />;
+        })}
+      </ul>
+    </section>
+  );
 }
 
 export default ClothesSection;

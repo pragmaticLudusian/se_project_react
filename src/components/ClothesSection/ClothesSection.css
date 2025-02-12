@@ -1,3 +1,21 @@
-.clothes-section {
+.clothes {
   flex-grow: 3;
+}
+
+.clothes__header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.clothes__grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 325px);
+  grid-template-rows: 328px;
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
 }
