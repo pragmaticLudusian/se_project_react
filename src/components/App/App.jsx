@@ -56,7 +56,7 @@ function App() {
         />
         <Routes>
           <Route
-            path="/"
+            path="/se_project_react/"
             element={
               <Main
                 weather={`${weatherData.weather}-${weatherData.time}`}
@@ -77,7 +77,7 @@ function App() {
             }
           />
           <Route
-            path="/profile"
+            path="/se_project_react/profile"
             element={
               <Profile
                 clothesArray={clothingItems}
