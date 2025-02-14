@@ -1,0 +1,58 @@
+.delete-confirm-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0 0 0 / 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.delete-confirm-modal__window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 60px 150px;
+  border: 1px solid rgba(0 0 0 / 0.3);
+  overflow: hidden;
+  font-size: 20px;
+}
+
+.delete-confirm-modal__close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: url("/src/assets/close.svg") no-repeat center/16px 16px;
+  opacity: 0.6;
+  border: 0;
+  padding: 2px;
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.delete-confirm-modal__msg {
+  margin: 0;
+}
+
+.delete-confirm-modal__btn {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: inherit;
+  line-height: inherit;
+}
+.delete-confirm-modal__btn_ok {
+  color: #ff4d00;
+  margin: 40px 0 24px;
+}

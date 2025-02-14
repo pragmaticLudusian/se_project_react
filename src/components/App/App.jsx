@@ -11,6 +11,7 @@ import { defaultClothingItems, location, apiKey } from "../../utils/constants";
 import { fetchWeather, getWeatherInfo } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import "./App.css";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function App() {
   const [openedModal, setOpenedModal] = useState("");
@@ -105,6 +106,7 @@ function App() {
           <ItemModal
             onClose={handleModal}
             // itemCardData={selectedItemCard} this prop would be needed if props.children isn't used, which is handled by App => Main => ItemCard anyways
+            // openDeleteConfirmModal={()=>handleModal("delete-confirm")}
           >
             <>
               <div className="item-modal__card-container">
@@ -121,12 +123,22 @@ function App() {
                 <p className="item-modal__description">
                   Weather: {selectedItemCard.weather}
                 </p>
-                <button type="button" className="item-modal__delete-btn">
+                <button
+                  type="button"
+                  className="item-modal__delete-btn"
+                  onClick={() => handleModal("delete-confirm")}
+                >
                   Delete item
                 </button>
               </div>
             </>
           </ItemModal>
+        )}
+        {openedModal === "delete-confirm" && (
+          <DeleteConfirmModal
+            onClose={handleModal}
+            itemCardData={selectedItemCard}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </>
