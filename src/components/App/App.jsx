@@ -121,6 +121,9 @@ function App() {
                 <p className="item-modal__description">
                   Weather: {selectedItemCard.weather}
                 </p>
+                <button type="button" className="item-modal__delete-btn">
+                  Delete item
+                </button>
               </div>
             </>
           </ItemModal>

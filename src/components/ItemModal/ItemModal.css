@@ -75,10 +75,26 @@
   width: calc(670px - 325px - (20px * 2));
   height: 328px;
   font-size: 20px;
+  padding: 12px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
 }
 
 .item-modal__description {
-  margin: 13px 0 0;
+  margin: 0;
+}
+
+.item-modal__delete-btn {
+  color: #ff4d00;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: inherit;
+  line-height: inherit;
 }
 
 @media screen and (max-width: 749px) {
