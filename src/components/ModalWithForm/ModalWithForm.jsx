@@ -14,7 +14,12 @@ function ModalWithForm(props) {
       className={`form-modal form-modal_type_${props.name}`}
       onClick={handleOverlay}
     >
-      <form action="" className="form-modal__window" name={props.name}>
+      <form
+        action=""
+        className="form-modal__window"
+        name={props.name}
+        onSubmit={props.onSubmit}
+      >
         <h2 className="form-modal__title">{props.title}</h2>
         <button
           type="button"
