@@ -22,4 +22,9 @@ export function addItem(name, imageUrl, weather) {
   });
 }
 
-export function deleteItem() {}
+export function deleteItem(id) {
+  return _request(`${baseUrl}/items/${id}`, {
+    method: "DELETE",
+    headers: baseHeaders,
+  });
+}

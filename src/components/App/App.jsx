@@ -9,7 +9,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import { location, apiKey } from "../../utils/constants";
 import { fetchWeather, getWeatherInfo } from "../../utils/weatherApi";
-import { addItem, getItems } from "../../utils/api";
+import { addItem, deleteItem, getItems } from "../../utils/api";
 import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import "./App.css";
 
@@ -58,12 +58,16 @@ function App() {
   } // AddItemModal -> ModalWithForm -> handleSubmit -> onAddItem(obj)
 
   function handleCardDelete() {
-    const filteredArray = clothingItems.filter(
-      (item) => item !== selectedItemCard
-    );
-    setClothingItems(filteredArray);
-    handleModal();
-  }
+    deleteItem(selectedItemCard._id)
+      .then(() => {
+        const filteredArray = clothingItems.filter(
+          (item) => item !== selectedItemCard
+        );
+        setClothingItems(filteredArray);
+        handleModal();
+      })
+      .catch(console.error);
+  } // ItemModal -> DeleteConfirmModal (card data is stored in sIC state)
 
   return (
     <>
