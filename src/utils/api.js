@@ -1,8 +1,8 @@
 const baseUrl = "http://localhost:3001";
 const baseHeaders = { "content-type": "application/json" };
 
-function _request(url, options) {
-  return fetch(url, options).then(_checkResponse);
+async function _request(url, options) {
+  return _checkResponse(await fetch(url, options));
 }
 
 function _checkResponse(res) {
@@ -11,9 +11,15 @@ function _checkResponse(res) {
 }
 
 export function getItems() {
-  return _request(`${baseUrl}/items`, { headers: baseHeaders });
+  return _request(`${baseUrl}/items`); // GET headers is optional
 }
 
-export function postItem() {}
+export function addItem(name, imageUrl, weather) {
+  return _request(`${baseUrl}/items`, {
+    method: "POST",
+    headers: baseHeaders,
+    body: JSON.stringify({ name, imageUrl, weather }),
+  });
+}
 
 export function deleteItem() {}

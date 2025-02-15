@@ -9,7 +9,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import { location, apiKey } from "../../utils/constants";
 import { fetchWeather, getWeatherInfo } from "../../utils/weatherApi";
-import { getItems } from "../../utils/api";
+import { addItem, getItems } from "../../utils/api";
 import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import "./App.css";
 
@@ -50,9 +50,11 @@ function App() {
       : setCurrentTemperatureUnit("C");
   }
 
-  function handleAddItemSubmit(newItem) {
-    newItem._id = clothingItems.length; // _id starts from 0
-    setClothingItems([newItem, ...clothingItems]);
+  function handleAddItemSubmit({ name, imageUrl, weather }) {
+    // newItem._id = clothingItems.length; // json server handles the _id auto-generation
+    addItem(name, imageUrl, weather)
+      .then((newItem) => setClothingItems([newItem, ...clothingItems]))
+      .catch(console.error);
   } // AddItemModal -> ModalWithForm -> handleSubmit -> onAddItem(obj)
 
   function handleCardDelete() {
