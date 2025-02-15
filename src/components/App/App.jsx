@@ -109,34 +109,9 @@ function App() {
         {openedModal === "card" && (
           <ItemModal
             onClose={handleModal}
-            // itemCardData={selectedItemCard} this prop would be needed if props.children isn't used, which is handled by App => Main => ItemCard anyways
-            // openDeleteConfirmModal={()=>handleModal("delete-confirm")}
-          >
-            <>
-              <div className="item-modal__card-container">
-                <img
-                  src={selectedItemCard.link}
-                  alt={selectedItemCard.name}
-                  className="item-modal__image"
-                />
-                <div className="item-modal__header">
-                  <p className="item-modal__name">{selectedItemCard.name}</p>
-                </div>
-              </div>
-              <div className="item-modal__text-container">
-                <p className="item-modal__description">
-                  Weather: {selectedItemCard.weather}
-                </p>
-                <button
-                  type="button"
-                  className="item-modal__delete-btn"
-                  onClick={() => handleModal("delete-confirm")}
-                >
-                  Delete item
-                </button>
-              </div>
-            </>
-          </ItemModal>
+            itemCardData={selectedItemCard} // App => Main => ItemCard
+            openDeleteConfirm={() => handleModal("delete-confirm")}
+          />
         )}
         {openedModal === "delete-confirm" && (
           <DeleteConfirmModal
