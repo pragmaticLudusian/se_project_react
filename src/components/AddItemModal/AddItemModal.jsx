@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // AddItemModal is considered to be extended from ModalWithForm, despite MWF contained *within* AIM
 
-function AddItemModal({ onAddItem, onCloseModal }) {
+function AddItemModal({ onAddItem, onClose }) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
   const [weather, setWeather] = useState("");
@@ -28,7 +28,7 @@ function AddItemModal({ onAddItem, onCloseModal }) {
   function handleSubmit(event) {
     event.preventDefault();
     onAddItem({ name, link, weather });
-    onCloseModal();
+    onClose();
   }
 
   return (
@@ -36,7 +36,7 @@ function AddItemModal({ onAddItem, onCloseModal }) {
       title="New garment"
       name="add-clothes"
       buttonText="Add garment"
-      onClose={onCloseModal}
+      onClose={onClose}
       onSubmit={handleSubmit}
     >
       <label className="form-modal__label">

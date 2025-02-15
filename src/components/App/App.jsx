@@ -104,10 +104,7 @@ function App() {
         </Routes>
         <Footer />
         {openedModal === "add-clothes" && (
-          <AddItemModal
-            onCloseModal={handleModal}
-            onAddItem={handleAddItemSubmit}
-          />
+          <AddItemModal onClose={handleModal} onAddItem={handleAddItemSubmit} />
         )}
         {openedModal === "card" && (
           <ItemModal
