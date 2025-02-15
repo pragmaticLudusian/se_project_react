@@ -9,18 +9,18 @@ export function fetchWeather({ latitude, longitude }, apiKey) {
 
 export function getWeatherInfo(data) {
   const weatherObj = {};
-  weatherObj.weather = getWeatherName(data.weather[0].id);
+  weatherObj.weather = _getWeatherName(data.weather[0].id);
   weatherObj.temperature = {
     C: data.main.temp.toFixed(1),
     F: (data.main.temp * (9 / 5) + 32).toFixed(1),
   }; // w/out a state's template obj being set, it would render as undef initially
-  weatherObj.temperatureName = getFuzzyTemperature(weatherObj.temperature.C); // default to C
+  weatherObj.temperatureName = _getFuzzyTemperature(weatherObj.temperature.C); // default to C
   weatherObj.city = data.name;
-  weatherObj.time = getTimeOfDay(data.sys.sunrise, data.sys.sunset);
+  weatherObj.time = _getTimeOfDay(data.sys.sunrise, data.sys.sunset);
   return weatherObj;
 }
 
-function getWeatherName(id) {
+function _getWeatherName(id) {
   if (id === 800) return "clear";
   switch (Math.floor(id / 100)) {
     case 2:
@@ -38,14 +38,14 @@ function getWeatherName(id) {
   }
 }
 
-function getFuzzyTemperature(temp) {
+function _getFuzzyTemperature(temp) {
   if (temp > 35) return "hot";
   else if (temp > 25 && temp <= 35) return "warm";
   else if (temp > 15 && temp <= 25) return "cool";
   else return "cold";
 }
 
-function getTimeOfDay(sunrise, sunset) {
+function _getTimeOfDay(sunrise, sunset) {
   const time = Date.now() / 1000; // api is sec, data.now is msec
   return time < sunrise || time > sunset ? "night" : "day"; // string for status to be used in css className
 }
