@@ -2,8 +2,9 @@ import { useEscape } from "../../utils/customHooks";
 import "./DeleteConfirmModal.css";
 
 function DeleteConfirmModal(props) {
+  const { name } = props.itemCardData;
+
   useEscape(props.onClose);
-  const { _id, name } = props.itemCardData;
 
   function handleOverlay(event) {
     event.target.classList.contains("delete-confirm-modal") && props.onClose();
@@ -27,6 +28,7 @@ function DeleteConfirmModal(props) {
         <button
           type="button"
           className="delete-confirm-modal__btn delete-confirm-modal__btn_ok"
+          onClick={props.onDeleteItem}
         >
           Yes, delete item
         </button>

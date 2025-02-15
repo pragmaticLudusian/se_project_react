@@ -4,14 +4,13 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import ItemModal from "../ItemModal/ItemModal";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import { defaultClothingItems, location, apiKey } from "../../utils/constants";
 import { fetchWeather, getWeatherInfo } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import "./App.css";
-import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 function App() {
   const [openedModal, setOpenedModal] = useState("");
@@ -45,9 +44,17 @@ function App() {
   }
 
   function handleAddItemSubmit(newItem) {
-    newItem._id = clothingItems.length;
+    newItem._id = clothingItems.length; // _id starts from 0
     setClothingItems([newItem, ...clothingItems]);
   } // AddItemModal -> ModalWithForm -> handleSubmit -> onAddItem(obj)
+
+  function handleCardDelete() {
+    const filteredArray = clothingItems.filter(
+      (item) => item !== selectedItemCard
+    );
+    setClothingItems(filteredArray);
+    handleModal();
+  }
 
   return (
     <>
@@ -138,6 +145,7 @@ function App() {
           <DeleteConfirmModal
             onClose={handleModal}
             itemCardData={selectedItemCard}
+            onDeleteItem={handleCardDelete}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
