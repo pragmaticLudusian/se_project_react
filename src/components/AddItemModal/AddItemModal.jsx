@@ -4,12 +4,12 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ onAddItem, onClose }) {
   const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
 
   useEffect(() => {
     setName("");
-    setLink("");
+    setImageUrl("");
     setWeather("");
   }, []);
 
@@ -18,7 +18,7 @@ function AddItemModal({ onAddItem, onClose }) {
   }
 
   function handleLink(event) {
-    setLink(event.target.value);
+    setImageUrl(event.target.value);
   }
 
   function handleWeather(event) {
@@ -27,7 +27,7 @@ function AddItemModal({ onAddItem, onClose }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    onAddItem({ name, link, weather });
+    onAddItem({ name, imageUrl, weather });
     onClose();
   }
 

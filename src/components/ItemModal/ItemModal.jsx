@@ -2,7 +2,7 @@ import { useEscape } from "../../utils/customHooks";
 import "./ItemModal.css";
 
 function ItemModal(props) {
-  const { name, link, weather } = props.itemCardData;
+  const { name, imageUrl, weather } = props.itemCardData;
 
   useEscape(props.onClose);
 
@@ -19,7 +19,7 @@ function ItemModal(props) {
           onClick={props.onClose}
         />
         <div className="item-modal__card-container">
-          <img src={link} alt={name} className="item-modal__image" />
+          <img src={imageUrl} alt={name} className="item-modal__image" />
           <div className="item-modal__header">
             <p className="item-modal__name">{name}</p>
           </div>
