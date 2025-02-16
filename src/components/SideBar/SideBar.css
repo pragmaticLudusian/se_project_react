@@ -2,7 +2,13 @@
   flex-grow: 1; /* take up as much of the page, limited to clothes grid */
   flex-shrink: 0; /* when page shrinks, leave elements as they are */
   display: flex;
-  align-items: center;
+  align-items: start;
+  gap: 16px;
+}
+
+.side-bar__user-container {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -19,4 +25,46 @@
 
 .side-bar__username {
   margin: 0;
+  line-height: 56px;
+}
+
+.side-bar__user-options {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+}
+
+.side-bar__user-option {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-weight: inherit;
+  font-size: 16px;
+  line-height: inherit;
+  cursor: pointer;
+  color: rgba(0 0 0 / 0.6);
+}
+
+@media screen and (max-width: 749px) {
+  .side-bar {
+    padding: 20px 0;
+    border-top: 1px solid rgba(0 0 0 / 0.3);
+    border-bottom: 1px solid rgba(0 0 0 / 0.3);
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .side-bar__user {
+  }
+
+  .side-bar__username {
+    font-size: 24px;
+    line-height: inherit;
+  }
+
+  .side-bar__user-option {
+    font-size: 20px;
+  }
 }

@@ -7,3 +7,10 @@
   font-size: 20px;
   line-height: 1.25;
 }
+
+@media screen and (max-width: 749px) {
+  .profile {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+}
