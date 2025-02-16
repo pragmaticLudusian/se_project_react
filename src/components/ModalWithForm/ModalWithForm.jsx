@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useEscape } from "../../utils/customHooks";
 import "./ModalWithForm.css";
 
@@ -19,6 +20,7 @@ function ModalWithForm(props) {
         className="form-modal__window"
         name={props.name}
         onSubmit={props.onSubmit}
+        // noValidate
       >
         <h2 className="form-modal__title">{props.title}</h2>
         <button
@@ -33,7 +35,8 @@ function ModalWithForm(props) {
         }
         <button
           type="submit"
-          className="form-modal__submit-btn form-modal__submit-btn_active"
+          className="form-modal__submit-btn"
+          // disabled={props.isValid ? false : true} // unlike HTML, this supports boolean state
         >
           {props.buttonText}
         </button>

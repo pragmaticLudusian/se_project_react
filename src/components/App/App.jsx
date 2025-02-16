@@ -9,7 +9,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 import { location, apiKey } from "../../utils/constants";
 import { fetchWeather, getWeatherInfo } from "../../utils/weatherApi";
-import { addItem, deleteItem, getItems } from "../../utils/api";
+import { addItem, deleteItem, getItems } from "../../utils/api"; // git update-index --skip-worktree db.json
 import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnitContext";
 import "./App.css";
 

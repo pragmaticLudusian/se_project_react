@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-// AddItemModal is considered to be extended from ModalWithForm, despite MWF contained *within* AIM
+// AddItemModal is considered to be extended from ModalWithForm, despite MWF component contained *within* AIM
 
 function AddItemModal({ onAddItem, onClose }) {
   const [name, setName] = useState("");
@@ -38,12 +38,18 @@ function AddItemModal({ onAddItem, onClose }) {
       buttonText="Add garment"
       onClose={onClose}
       onSubmit={handleSubmit}
+      isValid={false}
     >
       <label className="form-modal__label">
-        Name
+        Name{" "}
+        {true && (
+          <span className="form-modal__error-msg">
+            Please fill out this field
+          </span>
+        )}
         <input
           type="text"
-          className="form-modal__input"
+          className="form-modal__input form-modal__input_type_text"
           name="name"
           id="add-clothes_name" // used with htmlFor, unless nested inside label
           placeholder="Name"
@@ -55,9 +61,9 @@ function AddItemModal({ onAddItem, onClose }) {
         Image
         <input
           type="url"
-          className="form-modal__input"
-          name="image"
-          id="add-clothes_image"
+          className="form-modal__input form-modal__input_type_text"
+          name="imageUrl"
+          id="add-clothes_imageUrl"
           placeholder="Image URL"
           required
           onChange={handleLink}
@@ -73,7 +79,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="hot"
             value="hot"
-            className="form-modal__radio-btn"
+            className="form-modal__input form-modal__input_type_radio"
             required // for at least one radio
             onChange={handleWeather}
           />
@@ -87,7 +93,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="warm"
             value="warm"
-            className="form-modal__radio-btn"
+            className="form-modal__input form-modal__input_type_radio"
             onChange={handleWeather}
           />
           <label htmlFor="warm" className="form-modal__radio-label">
@@ -100,7 +106,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="cool"
             value="cool"
-            className="form-modal__radio-btn"
+            className="form-modal__input form-modal__input_type_radio"
             onChange={handleWeather}
           />
           <label htmlFor="cool" className="form-modal__radio-label">
@@ -113,7 +119,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="cold"
             value="cold"
-            className="form-modal__radio-btn"
+            className="form-modal__input form-modal__input_type_radio"
             onChange={handleWeather}
           />
           <label htmlFor="cold" className="form-modal__radio-label">
