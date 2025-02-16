@@ -37,39 +37,14 @@
 }
 
 .header__menu-close-btn {
-  background: url("../../assets/close.svg") no-repeat center/100%;
-  width: 21px;
-  height: 21px;
-  padding: 0;
-  border: 0;
-  position: absolute;
-  top: 11px;
-  right: 11px;
-  cursor: pointer;
+  display: none;
 }
 
 .header__user-container {
-  display: flex;
   align-items: center;
-}
-
-.header__user-container_desktop {
+  display: flex;
   gap: 20px;
-}
-
-.header__user-container_mobile {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  margin: 0 auto;
-  flex-direction: column-reverse;
-  gap: 24px;
-  padding: 60px 0;
-  box-shadow: 0 2px 8px rgba(0 0 0 / 0.1);
-  background-color: #fff;
-  border-radius: 10px;
+  /* normally the menu wouldn't disappear in the mobile view unless closed via React, as in the desktop view the CSS media queries would "disguise" as though it's always visible */
 }
 
 .header__add-clothes-btn {
@@ -138,7 +113,36 @@
     display: none;
   }
 
+  .header__user-container_mobile {
+    display: flex;
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    flex-direction: column-reverse;
+    gap: 24px;
+    padding: 60px 0 40px;
+    box-shadow: 0 2px 8px rgba(0 0 0 / 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
   .header__menu-btn {
     display: block;
+  }
+
+  .header__menu-close-btn {
+    display: block;
+    background: url("../../assets/close.svg") no-repeat center/100%;
+    width: 21px;
+    height: 21px;
+    padding: 0;
+    border: 0;
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    cursor: pointer;
   }
 }
