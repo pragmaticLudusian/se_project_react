@@ -8,7 +8,7 @@
   color: rgba(0 0 0 / 0.5);
   border-radius: 20px;
   display: flex;
-  justify-content: center; /*only needed for the 'floating' checkbox since the option elems are taking the entire width */
+  justify-content: space-between; /* due to box-sizing for the whole switch, the options end up being less than 1/2(width) */
   align-items: center;
   transition: 0.25s;
 }
@@ -30,6 +30,7 @@
   /* display: none; wouldn't make the element tabbable w/out simulated kbd events */
   opacity: 0;
   position: absolute;
+  left: 50%; /* technically center it due to flexbox */
 }
 
 .toggle-switch__checkbox:checked + .toggle-switch__button {
@@ -50,7 +51,7 @@
 }
 
 .toggle-switch__option {
-  width: 50%;
+  width: calc(50% - 2px);
   text-align: center;
   z-index: 1;
   font-size: 14px;
