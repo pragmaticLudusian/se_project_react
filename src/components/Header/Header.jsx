@@ -12,7 +12,7 @@ function Header(props) {
 
   useEffect(() => {
     const isTabletWidth = () =>
-      window.innerWidth >= 660 && window.innerWidth < 860; // alt to @media query
+      window.innerWidth >= 670 && window.innerWidth < 870; // alt to @media query
 
     function handleHeaderFormat() {
       setCurrentDate(

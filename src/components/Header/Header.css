@@ -94,7 +94,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 669px) {
   .header {
     padding: 16px;
     font-size: 16px;

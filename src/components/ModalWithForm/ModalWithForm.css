@@ -121,7 +121,7 @@
   background-color: rgba(0 0 0 / 0.3);
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 669px) {
   .form-modal {
     align-items: end;
   }
