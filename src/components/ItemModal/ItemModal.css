@@ -25,10 +25,10 @@
 }
 
 .item-modal__close-btn {
+  background: url("/src/assets/close_dark.svg") no-repeat center/16px 16px;
   position: absolute;
   top: 20px;
   right: 20px;
-  background: url("/src/assets/close.svg") no-repeat center/16px 16px;
   opacity: 0.6;
   border: 0;
   padding: 2px;
@@ -43,6 +43,8 @@
   width: 325px;
   height: 328px;
   font-size: 16px;
+  display: flex;
+  justify-content: center;
 }
 
 .item-modal__image {
@@ -54,21 +56,21 @@
 }
 
 .item-modal__header {
-  width: 100%;
+  width: calc(100% - 19px * 2);
   display: flex;
   justify-content: center;
   align-items: baseline;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 19px;
+  /* left: 0; must be unset for auto-width to work */
 }
 
-.item-modal__name {
+.item-modal__header-name {
   color: rgba(0 0 0 / 0.6);
   padding: 2px 12px;
   border-radius: 4px;
   background-color: #fff;
-  margin: 19px 0 0;
+  margin: 0;
 }
 
 .item-modal__text-container {
@@ -76,7 +78,6 @@
   height: 328px;
   font-size: 20px;
   padding: 12px 0;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -85,6 +86,10 @@
 
 .item-modal__description {
   margin: 0;
+}
+
+.item-modal__text-name {
+  display: none; /* appear only on mobile, as it's part of the .text-name-container */
 }
 
 .item-modal__delete-btn {
@@ -105,6 +110,7 @@
   }
 
   .item-modal__close-btn {
+    background: url("/src/assets/close_dark.svg") no-repeat center/16px 16px;
     top: 12px;
     right: 12px;
     background-size: 100%;
@@ -113,39 +119,47 @@
   }
 
   .item-modal__card-container {
-    display: flex;
-    flex-direction: column;
     width: 343px;
-    height: unset; /* container originally has both image and name, but in mobile they're separate */
+    height: 343px; /* container originally has both image and name, but in mobile they're separate */
     font-size: 20px;
   }
 
   .item-modal__image {
-    width: 343px;
-    height: 343px;
     border-radius: 0;
   }
 
   .item-modal__header {
-    position: static;
-    justify-content: start;
-  }
-
-  .item-modal__name {
-    padding: 0;
-    margin: 20px 0 0 20px;
-    color: #000;
-    background-color: transparent;
-    width: 100%;
-    border-radius: 0;
+    display: none;
   }
 
   .item-modal__text-container {
-    width: 100%;
-    height: 76px;
+    padding: 20px 20px 40px;
+    width: 343px; /* must be explicit in px, not %, or it won't wrap content at all */
+    height: unset;
+    flex-direction: column-reverse;
+    gap: 12px;
+    box-sizing: border-box;
   }
 
-  .item-modal__description {
-    margin: 12px 0 0 20px;
+  .item-modal__text-name-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .item-modal__text-name {
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .item-modal__delete-btn {
+    flex-shrink: 0;
   }
 }

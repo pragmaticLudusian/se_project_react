@@ -30,7 +30,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: url("/src/assets/close.svg") no-repeat center/16px 16px;
+  background: url("/src/assets/close_dark.svg") no-repeat center/16px 16px;
   opacity: 0.6;
   border: 0;
   padding: 2px;

@@ -8,6 +8,8 @@
   cursor: pointer;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center; /* center header-name tags even when absolutely positioned*/
 }
 
 .card__image {
@@ -20,8 +22,8 @@
 .card__header {
   position: absolute;
   top: 15px;
-  left: 0;
-  width: 100%;
+  /* left: 0; must be unset for auto width to work */
+  width: calc(100% - 15px * 2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,5 +47,6 @@
 
   .card__header {
     top: 7px;
+    width: calc(100% - 7px * 2);
   }
 }

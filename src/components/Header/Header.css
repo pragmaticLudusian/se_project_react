@@ -141,7 +141,7 @@
 
   .header__menu-close-btn {
     display: block;
-    background: url("../../assets/close.svg") no-repeat center/100%;
+    background: url("../../assets/close_dark.svg") no-repeat center/100%;
     width: 21px;
     height: 21px;
     padding: 0;
