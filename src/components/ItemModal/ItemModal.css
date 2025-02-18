@@ -25,7 +25,7 @@
 }
 
 .item-modal__close-btn {
-  background: url("/src/assets/close_dark.svg") no-repeat center/16px 16px;
+  background: url("../../assets/close_dark.svg") no-repeat center/16px 16px;
   position: absolute;
   top: 20px;
   right: 20px;
@@ -110,7 +110,7 @@
   }
 
   .item-modal__close-btn {
-    background: url("/src/assets/close_dark.svg") no-repeat center/16px 16px;
+    background: url("../../assets/close_dark.svg") no-repeat center/16px 16px;
     top: 12px;
     right: 12px;
     background-size: 100%;
