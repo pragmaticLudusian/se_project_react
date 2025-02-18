@@ -56,3 +56,21 @@
   color: #ff4d00;
   margin: 40px 0 24px;
 }
+
+@media screen and (max-width: 669px) {
+  .delete-confirm-modal {
+    align-items: end;
+  }
+
+  .delete-confirm-modal__window {
+    padding: 32px 16px;
+    flex-basis: 440px;
+  }
+
+  .delete-confirm-modal__close-btn {
+    top: 20px;
+    right: 20px;
+    background-size: 100%;
+    opacity: 1;
+  }
+}
