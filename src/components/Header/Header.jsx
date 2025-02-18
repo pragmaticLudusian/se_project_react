@@ -7,26 +7,28 @@ import "./Header.css";
 function Header(props) {
   const date = new Date();
 
-  const [currentDate, setCurrentDate] = useState("");
+  const [currentDate, setCurrentDate] = useState(""); // date is only handled at the component level
+  const [currentName, setCurrentName] = useState(props.name);
 
   useEffect(() => {
-    function handleDateFormat() {
+    const isTabletWidth = () =>
+      window.innerWidth >= 660 && window.innerWidth < 860; // alt to @media query
+
+    function handleHeaderFormat() {
       setCurrentDate(
         date.toLocaleString("default", {
-          month:
-            window.innerWidth >= 750 && window.innerWidth < 800
-              ? "short"
-              : "long",
+          month: isTabletWidth() ? "short" : "long",
           day: "numeric",
         })
       );
+      setCurrentName(isTabletWidth() ? "T.T." : props.name);
     }
 
-    window.addEventListener("resize", handleDateFormat); // alt to @media query
-    if (!currentDate) handleDateFormat(); // just in case, render ONLY during mounting phase
+    window.addEventListener("resize", handleHeaderFormat); // allows updating
+    if (!currentDate) handleHeaderFormat(); // just in case, render ONLY during mounting phase
 
     return () => {
-      window.removeEventListener("resize", handleDateFormat);
+      window.removeEventListener("resize", handleHeaderFormat);
     };
   }, [window.innerWidth]);
 
@@ -73,7 +75,7 @@ function Header(props) {
         </button>
         <div className="header__user">
           <Link to="/se_project_react/profile">
-            <p className="header__username">Terrence Tegegne</p>
+            <p className="header__username">{currentName}</p>
           </Link>
           <Link to="/se_project_react/profile">
             <div className="header__avatar header__avatar_image" />

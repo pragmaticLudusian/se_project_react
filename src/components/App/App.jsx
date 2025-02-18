@@ -80,6 +80,7 @@ function App() {
           isMobileMenuOpened={isMobileMenuOpened}
           setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
           // toggleTempUnit={handleToggleSwitchChange} not needed when using context
+          name="Terrence Tegegne" // currently hardcoded
         />
         <Routes>
           <Route
