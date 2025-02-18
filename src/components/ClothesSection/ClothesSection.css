@@ -35,3 +35,20 @@
   justify-content: center;
   text-align: center;
 }
+
+@media screen and (max-width: 669px) {
+  .clothes {
+    flex-basis: unset;
+    width: 100%;
+  }
+
+  .clothes__header {
+    justify-content: space-between;
+  }
+
+  .clothes__grid {
+    grid-template-columns: repeat(auto-fit, 164px);
+    grid-template-rows: 164px;
+    gap: 16px 15px;
+  }
+}
