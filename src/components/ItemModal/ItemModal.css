@@ -75,7 +75,6 @@
 
 .item-modal__text-container {
   width: calc(670px - 325px - (20px * 2));
-  height: 328px;
   font-size: 20px;
   padding: 12px 0;
   display: flex;
@@ -135,7 +134,6 @@
   .item-modal__text-container {
     padding: 20px 20px 40px;
     width: 343px; /* must be explicit in px, not %, or it won't wrap content at all */
-    height: unset;
     flex-direction: column-reverse;
     gap: 12px;
     box-sizing: border-box;
