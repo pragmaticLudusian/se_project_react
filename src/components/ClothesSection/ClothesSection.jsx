@@ -9,7 +9,7 @@ function ClothesSection(props) {
         <button
           type="button"
           className="clothes__add-btn"
-          onClick={props.openFormModal}
+          onClick={props.onAddClothesClick}
         >
           + Add new
         </button>
@@ -20,7 +20,7 @@ function ClothesSection(props) {
             <ItemCard
               key={item._id}
               item={item}
-              openItemModal={props.openItemModal}
+              onCardClick={props.onCardClick}
               itemCardData={props.itemCardData}
             />
           );

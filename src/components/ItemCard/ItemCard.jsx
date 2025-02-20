@@ -5,7 +5,7 @@ function ItemCard(props) {
 
   function handleCardClick() {
     // onClick's the actual html-js event handler, so avoiding naming props after event handlers; pass the prop set object for itemCardData to use to return to Main and then to App and ItemModal
-    props.openItemModal();
+    props.onCardClick();
     props.itemCardData(props.item);
   }
 

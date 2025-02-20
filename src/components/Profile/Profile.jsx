@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 function Profile(props) {
   useEffect(() => {
-    props.closeMobileMenu();
+    props.onCloseMobileMenuClick();
   }, []);
 
   return (
@@ -13,8 +13,8 @@ function Profile(props) {
       <SideBar />
       <ClothesSection
         clothesArray={props.clothesArray}
-        openFormModal={props.openFormModal}
-        openItemModal={props.openItemModal}
+        onAddClothesClick={props.onAddClothesClick}
+        onCardClick={props.onCardClick}
         itemCardData={props.itemCardData}
       />
     </main>

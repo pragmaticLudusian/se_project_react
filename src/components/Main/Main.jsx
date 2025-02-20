@@ -12,7 +12,7 @@ function Main(props) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   useEffect(() => {
-    props.closeMobileMenu(); // close even during page navigation
+    props.onCloseMobileMenuClick(); // close even during page navigation
   }, []);
 
   return (
@@ -30,7 +30,7 @@ function Main(props) {
                   <ItemCard
                     key={item._id} // paramount for map, not so much inside
                     item={item} // all this would be destructured inside
-                    openItemModal={props.openItemModal} // props passed...
+                    onCardClick={props.onCardClick} // props passed...
                     itemCardData={props.itemCardData} // from App
                   />
                 ); // the return statement is optional in the context of ternary ops, where otherwise it's mandatory in map blocks

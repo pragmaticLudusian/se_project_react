@@ -75,18 +75,19 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <Header
+          name="Terrence Tegegne" // currently hardcoded
           location={weatherData.city}
-          openFormModal={() => handleModal("add-clothes")}
+          onAddClothesClick={() => handleModal("add-clothes")}
           isMobileMenuOpened={isMobileMenuOpened}
           setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
           // toggleTempUnit={handleToggleSwitchChange} not needed when using context, even though "convention" states that setters are to stay in their originating components
-          name="Terrence Tegegne" // currently hardcoded
         />
         <Routes>
           <Route
             path="/se_project_react/"
             element={
               <Main
+                onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
                 weather={`${weatherData.weather}-${weatherData.time}`}
                 temperature={
                   weatherData.temperature &&
@@ -94,14 +95,13 @@ function App() {
                 } // ensures soft initializing of object before passing a specific temp unit.
                 // note: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
                 temperatureName={weatherData.temperatureName}
-                openItemModal={() => {
+                clothesArray={clothingItems}
+                onCardClick={() => {
                   handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
                 }}
-                clothesArray={clothingItems}
                 itemCardData={(card) => {
                   setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main, then to the specific ItemCard, then return the card prop set (object) back to App, and then pass it ItemModal's children elements by reading its state
                 }}
-                closeMobileMenu={() => setMobileMenuOpened(false)}
               />
             }
           />
@@ -109,11 +109,11 @@ function App() {
             path="/se_project_react/profile"
             element={
               <Profile
+                onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
                 clothesArray={clothingItems}
-                openFormModal={() => handleModal("add-clothes")}
-                openItemModal={() => handleModal("card")}
+                onAddClothesClick={() => handleModal("add-clothes")}
+                onCardClick={() => handleModal("card")}
                 itemCardData={(card) => setItemCard(card)}
-                closeMobileMenu={() => setMobileMenuOpened(false)}
               />
             }
           />
