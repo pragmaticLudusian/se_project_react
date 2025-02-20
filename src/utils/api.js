@@ -6,8 +6,7 @@ async function _request(url, options) {
 }
 
 function _checkResponse(res) {
-  if (res.ok) return res.json();
-  return Promise.reject(`error ${res.status}`);
+  return res.ok ? res.json() : Promise.reject(`error ${res.status}`);
 }
 
 export function getItems() {
