@@ -27,36 +27,35 @@ function AddItemModal({ onAddItem, onClose }) {
   }, []);
 
   function handleName(event) {
-    setName({
-      value: event.target.value,
-      isValid: event.target.validity.valid,
-      validationMessage:
-        event.target.validationMessage && `(${event.target.validationMessage})`,
-    });
-    setFormValid(event.target.closest("form").checkValidity());
+    setName(validateForm(event.target));
   }
 
   function handleLink(event) {
-    setImageUrl({
-      value: event.target.value,
-      isValid: event.target.validity.valid,
-      validationMessage:
-        event.target.validationMessage && `(${event.target.validationMessage})`,
-    });
-    setFormValid(event.target.closest("form").checkValidity());
+    setImageUrl(validateForm(event.target));
   }
 
   function handleWeather(event) {
-    setWeather({
-      value: event.target.value,
-    });
-    setFormValid(event.target.closest("form").checkValidity());
+    setWeather(validateForm(event.target));
+  }
+
+  function validateForm(input) {
+    setFormValid(input.closest("form").checkValidity()); // handle global form validation too
+    return {
+      value: input.value,
+      isValid: input.validity.valid,
+      validationMessage:
+        input.validationMessage && `(${input.validationMessage})`,
+    };
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    onAddItem(Object.fromEntries(formData.entries())); // since the states are objects, but FormData is a specialized object, simplify using Object prototype to reform the necessary keys and value pairs
+    const formObject = {
+      name: name.value,
+      imageUrl: imageUrl.value,
+      weather: weather.value,
+    }; // alt w/out state can be Object.fromEntries(FormData.entires())
+    onAddItem(formObject);
     onClose();
   }
 

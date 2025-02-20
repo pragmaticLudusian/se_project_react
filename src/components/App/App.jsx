@@ -51,7 +51,7 @@ function App() {
   }
 
   function handleAddItemSubmit({ name, imageUrl, weather }) {
-    // newItem._id = clothingItems.length; // json server handles the _id auto-generation
+    // newItem._id = clothingItems.length; // json-server handles the _id auto-generation
     addItem(name, imageUrl, weather)
       .then((newItem) => setClothingItems([newItem, ...clothingItems]))
       .catch(console.error);
