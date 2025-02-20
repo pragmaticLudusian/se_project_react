@@ -84,7 +84,7 @@ function App() {
         />
         <Routes>
           <Route
-            path="/se_project_react/"
+            path="/"
             element={
               <Main
                 onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
@@ -106,7 +106,7 @@ function App() {
             }
           />
           <Route
-            path="/se_project_react/profile"
+            path="/profile"
             element={
               <Profile
                 onCloseMobileMenuClick={() => setMobileMenuOpened(false)}

@@ -35,7 +35,7 @@ function Header(props) {
   return (
     <header className="header">
       <div className="header__preamble-container">
-        <Link to="/se_project_react/" className="header__logo-link">
+        <Link to="/" className="header__logo-link">
           <img src={wtwrLogo} alt="WTWR logo" className="header__logo" />
         </Link>
         <p className="header__time-and-place">
@@ -74,10 +74,10 @@ function Header(props) {
           + Add clothes
         </button>
         <div className="header__user">
-          <Link to="/se_project_react/profile" className="header__text-link">
+          <Link to="/profile" className="header__text-link">
             <p className="header__username">{currentName}</p>
           </Link>
-          <Link to="/se_project_react/profile" className="header__avatar-link">
+          <Link to="/profile" className="header__avatar-link">
             <div className="header__avatar header__avatar_image" />
           </Link>
         </div>
