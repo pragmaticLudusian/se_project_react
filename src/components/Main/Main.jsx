@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import reroll from "../../assets/reroll.svg";
@@ -10,6 +10,10 @@ function Main(props) {
     return item.weather === props.temperatureName;
   });
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
+  useEffect(() => {
+    props.closeMobileMenu(); // close even during page navigation
+  }, []);
 
   return (
     <main className="main">

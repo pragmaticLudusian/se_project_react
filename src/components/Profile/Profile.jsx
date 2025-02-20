@@ -1,8 +1,13 @@
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
+import { useEffect } from "react";
 
 function Profile(props) {
+  useEffect(() => {
+    props.closeMobileMenu();
+  }, []);
+
   return (
     <main className="profile">
       <SideBar />

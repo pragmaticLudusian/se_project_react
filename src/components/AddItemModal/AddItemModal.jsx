@@ -84,6 +84,7 @@ function AddItemModal({ onAddItem, onClose }) {
           placeholder="Name"
           required
           onChange={handleName}
+          value={name.value}
         />
       </label>
       <label
@@ -102,6 +103,7 @@ function AddItemModal({ onAddItem, onClose }) {
           placeholder="Image URL"
           required
           onChange={handleLink}
+          value={imageUrl.value}
         />
       </label>
       <fieldset className="form-modal__fieldset">
@@ -114,6 +116,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="hot"
             value="hot"
+            checked={weather.value === "hot"}
             className="form-modal__input form-modal__input_type_radio"
             required // for at least one radio
             onChange={handleWeather}
@@ -128,6 +131,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="warm"
             value="warm"
+            checked={weather.value === "warm"}
             className="form-modal__input form-modal__input_type_radio"
             onChange={handleWeather}
           />
@@ -141,6 +145,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="cool"
             value="cool"
+            checked={weather.value === "cool"}
             className="form-modal__input form-modal__input_type_radio"
             onChange={handleWeather}
           />
@@ -154,6 +159,7 @@ function AddItemModal({ onAddItem, onClose }) {
             name="weather"
             id="cold"
             value="cold"
+            checked={weather.value === "cold"}
             className="form-modal__input form-modal__input_type_radio"
             onChange={handleWeather}
           />

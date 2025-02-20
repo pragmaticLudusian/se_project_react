@@ -53,7 +53,7 @@ function App() {
   function handleAddItemSubmit({ name, imageUrl, weather }) {
     // newItem._id = clothingItems.length; // json-server handles the _id auto-generation
     addItem(name, imageUrl, weather)
-      .then((newItem) => setClothingItems([newItem, ...clothingItems]))
+      .then((newItem) => setClothingItems((oldItems) => [newItem, ...oldItems])) // prevent state staleness
       .catch(console.error);
   } // AddItemModal -> ModalWithForm -> handleSubmit -> onAddItem(obj)
 
@@ -79,7 +79,7 @@ function App() {
           openFormModal={() => handleModal("add-clothes")}
           isMobileMenuOpened={isMobileMenuOpened}
           setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
-          // toggleTempUnit={handleToggleSwitchChange} not needed when using context
+          // toggleTempUnit={handleToggleSwitchChange} not needed when using context, even though "convention" states that setters are to stay in their originating components
           name="Terrence Tegegne" // currently hardcoded
         />
         <Routes>
@@ -101,6 +101,7 @@ function App() {
                 itemCardData={(card) => {
                   setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main, then to the specific ItemCard, then return the card prop set (object) back to App, and then pass it ItemModal's children elements by reading its state
                 }}
+                closeMobileMenu={() => setMobileMenuOpened(false)}
               />
             }
           />
@@ -112,6 +113,7 @@ function App() {
                 openFormModal={() => handleModal("add-clothes")}
                 openItemModal={() => handleModal("card")}
                 itemCardData={(card) => setItemCard(card)}
+                closeMobileMenu={() => setMobileMenuOpened(false)}
               />
             }
           />
