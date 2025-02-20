@@ -20,7 +20,7 @@ function ModalWithForm(props) {
         className="form-modal__window"
         name={props.name}
         onSubmit={props.onSubmit}
-        // noValidate
+        noValidate
       >
         <h2 className="form-modal__title">{props.title}</h2>
         <button
@@ -36,7 +36,7 @@ function ModalWithForm(props) {
         <button
           type="submit"
           className="form-modal__submit-btn"
-          // disabled={props.isValid ? false : true} // unlike HTML, this supports boolean state
+          disabled={props.isValid ? false : true} // unlike HTML, this supports boolean state (false means disable the disabled flag/double-negative)
         >
           {props.buttonText}
         </button>
