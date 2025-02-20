@@ -55,7 +55,8 @@ function AddItemModal({ onAddItem, onClose }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    onAddItem({ name, imageUrl, weather }); // FormData can be used here instead
+    const formData = new FormData(event.target);
+    onAddItem(Object.fromEntries(formData.entries())); // since the states are objects, but FormData is a specialized object, simplify using Object prototype to reform the necessary keys and value pairs
     onClose();
   }
 
