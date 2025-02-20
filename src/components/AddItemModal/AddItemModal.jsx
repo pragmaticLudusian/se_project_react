@@ -54,7 +54,7 @@ function AddItemModal({ onAddItem, onClose }) {
       name: name.value,
       imageUrl: imageUrl.value,
       weather: weather.value,
-    }; // alt w/out state can be Object.fromEntries(FormData.entires())
+    }; // alt w/out state can be Object.fromEntries(FormData.entries())
     onAddItem(formObject);
     onClose();
   }
