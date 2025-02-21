@@ -14,13 +14,13 @@ import CurrentTemperatureUnitContext from "../../contexts/currentTemperatureUnit
 import "./App.css";
 
 function App() {
-  const [openedModal, setOpenedModal] = useState("");
+  const [openedModal, setOpenedModal] = useState(""); // string var doubling as boolean (empty means false)
   const [selectedItemCard, setItemCard] = useState(null);
   const [weatherData, setWeatherData] = useState({}); // instead of an empty obj, it could have the structure all set up by default. alt. use var? or obj && obj.key
-  const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchWeather(location, apiKey)
@@ -42,7 +42,7 @@ function App() {
   function handleModal(window = "") {
     // if just called, simply close any active modal window - perfect for using a callback
     setOpenedModal(window);
-    window && setMobileMenuOpened(false);
+    window && setIsMobileMenuOpen(false);
   }
 
   function handleToggleSwitchChange() {
@@ -55,7 +55,7 @@ function App() {
     // newItem._id = clothingItems.length; // json-server handles the _id auto-generation
     addItem(name, imageUrl, weather)
       .then((newItem) => {
-        setLoading(true);
+        setIsLoading(true);
         return newItem;
       })
       .then((newItem) => {
@@ -63,12 +63,12 @@ function App() {
         handleModal();
       })
       .catch(console.error)
-      .finally(() => setLoading(false));
+      .finally(() => setIsLoading(false));
   } // AddItemModal -> ModalWithForm -> handleSubmit -> onAddItem(obj)
 
   function handleCardDelete() {
     deleteItem(selectedItemCard._id)
-      .then(() => setLoading(true))
+      .then(() => setIsLoading(true))
       .then(() => {
         const filteredArray = clothingItems.filter(
           (item) => item !== selectedItemCard
@@ -77,7 +77,7 @@ function App() {
         handleModal();
       })
       .catch(console.error)
-      .finally(() => setLoading(false));
+      .finally(() => setIsLoading(false));
   } // ItemModal -> DeleteConfirmModal (card data is stored in sIC state)
 
   return (
@@ -88,8 +88,8 @@ function App() {
         name="Terrence Tegegne" // currently hardcoded
         location={weatherData.city}
         onAddClothesClick={() => handleModal("add-clothes")}
-        isMobileMenuOpened={isMobileMenuOpened}
-        setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={(state) => setIsMobileMenuOpen(state)}
         // toggleTempUnit={handleToggleSwitchChange} not needed when using context, even though "convention" states that setters are to stay in their originating components
       />
       <Routes>
@@ -97,7 +97,7 @@ function App() {
           path="/"
           element={
             <Main
-              onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
+              onCloseMobileMenuClick={() => setIsMobileMenuOpen(false)}
               weather={`${weatherData.weather}-${weatherData.time}`}
               temperature={
                 weatherData.temperature &&
@@ -119,7 +119,7 @@ function App() {
           path="/profile"
           element={
             <Profile
-              onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
+              onCloseMobileMenuClick={() => setIsMobileMenuOpen(false)}
               clothesArray={clothingItems}
               onAddClothesClick={() => handleModal("add-clothes")}
               onCardClick={() => handleModal("card")}
@@ -131,6 +131,7 @@ function App() {
       <Footer />
       {openedModal === "add-clothes" && (
         <AddItemModal
+          isOpen={openedModal}
           onClose={handleModal}
           onAddItem={handleAddItemSubmit}
           buttonText={isLoading ? "Adding..." : "Add garment"}
@@ -138,6 +139,7 @@ function App() {
       )}
       {openedModal === "card" && (
         <ItemModal
+          isOpen={openedModal}
           onClose={handleModal}
           itemCardData={selectedItemCard} // App => Main => ItemCard
           openDeleteConfirm={() => handleModal("delete-confirm")}
@@ -145,6 +147,7 @@ function App() {
       )}
       {openedModal === "delete-confirm" && (
         <DeleteConfirmModal
+          isOpen={openedModal}
           onClose={handleModal}
           itemCardData={selectedItemCard}
           onDeleteItem={handleCardDelete}

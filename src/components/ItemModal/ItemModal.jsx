@@ -1,17 +1,13 @@
-import { useEscape } from "../../utils/customHooks";
+import { useModalClose } from "../../utils/customHooks";
 import "./ItemModal.css";
 
 function ItemModal(props) {
   const { name, imageUrl, weather } = props.itemCardData;
 
-  useEscape(props.onClose);
-
-  function handleOverlay(event) {
-    event.target.classList.contains("item-modal") && props.onClose();
-  }
+  useModalClose(props.isOpen, props.onClose);
 
   return (
-    <div className="item-modal" onClick={handleOverlay}>
+    <div className="modal item-modal">
       <div className="item-modal__window">
         <button
           type="button"

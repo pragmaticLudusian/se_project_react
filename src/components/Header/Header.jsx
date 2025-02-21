@@ -42,26 +42,26 @@ function Header(props) {
           {[currentDate, props.location].join(", ")}
         </p>
       </div>
-      {!props.isMobileMenuOpened && (
+      {!props.isMobileMenuOpen && (
         <button
           type="button"
           className="header__menu-btn"
           onClick={() => {
-            props.setMobileMenuOpened(true);
+            props.setIsMobileMenuOpen(true);
           }}
         />
       )}
       <div
         className={`header__user-container header__user-container_${
-          props.isMobileMenuOpened ? "mobile" : "desktop"
+          props.isMobileMenuOpen ? "mobile" : "desktop"
         }`}
       >
-        {props.isMobileMenuOpened && (
+        {props.isMobileMenuOpen && (
           <button
             type="button"
             className="header__menu-close-btn"
             onClick={() => {
-              props.setMobileMenuOpened(false);
+              props.setIsMobileMenuOpen(false);
             }}
           />
         )}

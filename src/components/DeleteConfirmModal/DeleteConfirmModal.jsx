@@ -1,17 +1,13 @@
-import { useEscape } from "../../utils/customHooks";
+import { useModalClose } from "../../utils/customHooks";
 import "./DeleteConfirmModal.css";
 
 function DeleteConfirmModal(props) {
   const { name } = props.itemCardData;
 
-  useEscape(props.onClose);
-
-  function handleOverlay(event) {
-    event.target.classList.contains("delete-confirm-modal") && props.onClose();
-  }
+  useModalClose(props.isOpen, props.onClose);
 
   return (
-    <div className="delete-confirm-modal" onClick={handleOverlay}>
+    <div className="modal delete-confirm-modal">
       <div className="delete-confirm-modal__window">
         <button
           type="button"

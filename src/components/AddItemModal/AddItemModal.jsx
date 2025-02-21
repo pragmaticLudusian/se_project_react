@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../utils/customHooks";
 // AddItemModal is considered to be extended from ModalWithForm, despite MWF component contained *within* AIM
 
-function AddItemModal({ onAddItem, onClose, buttonText }) {
+function AddItemModal({ isOpen, onAddItem, onClose, buttonText }) {
   const { values, errors, isValid, handleChange, resetForm } =
     useFormAndValidation();
 
@@ -24,6 +24,7 @@ function AddItemModal({ onAddItem, onClose, buttonText }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       isValid={isValid}
+      isOpen={isOpen}
     >
       <label
         className={`form-modal__label ${

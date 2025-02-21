@@ -1,19 +1,13 @@
-import { useState } from "react";
-import { useEscape } from "../../utils/customHooks";
+import { useModalClose } from "../../utils/customHooks";
 import "./ModalWithForm.css";
 
 function ModalWithForm(props) {
-  useEscape(props.onClose);
-
-  function handleOverlay(event) {
-    // more efficient than querySelector to close outside the modal window
-    event.target.classList.contains("form-modal") && props.onClose();
-  }
+  useModalClose(props.isOpen, props.onClose);
 
   return (
     <div
-      className={`form-modal form-modal_type_${props.name}`}
-      onClick={handleOverlay}
+      className={`modal form-modal form-modal_type_${props.name}`}
+      // onClick={props.onClose} // already handled in useModalClose
     >
       <form
         action=""
