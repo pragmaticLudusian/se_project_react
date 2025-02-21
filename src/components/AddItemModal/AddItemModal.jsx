@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // AddItemModal is considered to be extended from ModalWithForm, despite MWF component contained *within* AIM
 
-function AddItemModal({ onAddItem, onClose }) {
+function AddItemModal({ onAddItem, onClose, buttonText }) {
   const [name, setName] = useState({
     value: "",
     isValid: false,
@@ -55,15 +55,14 @@ function AddItemModal({ onAddItem, onClose }) {
       imageUrl: imageUrl.value,
       weather: weather.value,
     }; // alt w/out state can be Object.fromEntries(FormData.entries())
-    onAddItem(formObject);
-    onClose();
+    onAddItem(formObject); // close modal from there inside .then
   }
 
   return (
     <ModalWithForm
       title="New garment"
       name="add-clothes"
-      buttonText="Add garment"
+      buttonText={buttonText}
       onClose={onClose}
       onSubmit={handleSubmit}
       isValid={isFormValid}

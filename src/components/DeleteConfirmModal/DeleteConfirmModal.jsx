@@ -30,7 +30,7 @@ function DeleteConfirmModal(props) {
           className="delete-confirm-modal__btn delete-confirm-modal__btn_ok"
           onClick={props.onDeleteItem}
         >
-          Yes, delete item
+          {props.buttonText}
         </button>
         <button
           type="button"

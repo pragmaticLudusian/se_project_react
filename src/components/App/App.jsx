@@ -20,6 +20,7 @@ function App() {
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false); // if this were to be exclusive to this component, App wouldn't know how to close other modal components. This "lifting" of the state is normal practice.
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchWeather(location, apiKey)
@@ -53,12 +54,21 @@ function App() {
   function handleAddItemSubmit({ name, imageUrl, weather }) {
     // newItem._id = clothingItems.length; // json-server handles the _id auto-generation
     addItem(name, imageUrl, weather)
-      .then((newItem) => setClothingItems((oldItems) => [newItem, ...oldItems])) // prevent state staleness
-      .catch(console.error);
+      .then((newItem) => {
+        setLoading(true);
+        return newItem;
+      })
+      .then((newItem) => {
+        setClothingItems((oldItems) => [newItem, ...oldItems]); // prevent state staleness
+        handleModal();
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
   } // AddItemModal -> ModalWithForm -> handleSubmit -> onAddItem(obj)
 
   function handleCardDelete() {
     deleteItem(selectedItemCard._id)
+      .then(() => setLoading(true))
       .then(() => {
         const filteredArray = clothingItems.filter(
           (item) => item !== selectedItemCard
@@ -66,78 +76,82 @@ function App() {
         setClothingItems(filteredArray);
         handleModal();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setLoading(false));
   } // ItemModal -> DeleteConfirmModal (card data is stored in sIC state)
 
   return (
-    <>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <Header
-          name="Terrence Tegegne" // currently hardcoded
-          location={weatherData.city}
-          onAddClothesClick={() => handleModal("add-clothes")}
-          isMobileMenuOpened={isMobileMenuOpened}
-          setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
-          // toggleTempUnit={handleToggleSwitchChange} not needed when using context, even though "convention" states that setters are to stay in their originating components
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <Header
+        name="Terrence Tegegne" // currently hardcoded
+        location={weatherData.city}
+        onAddClothesClick={() => handleModal("add-clothes")}
+        isMobileMenuOpened={isMobileMenuOpened}
+        setMobileMenuOpened={(state) => setMobileMenuOpened(state)}
+        // toggleTempUnit={handleToggleSwitchChange} not needed when using context, even though "convention" states that setters are to stay in their originating components
+      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main
+              onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
+              weather={`${weatherData.weather}-${weatherData.time}`}
+              temperature={
+                weatherData.temperature &&
+                weatherData.temperature[currentTemperatureUnit]
+              } // ensures soft initializing of object before passing a specific temp unit.
+              // note: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
+              temperatureName={weatherData.temperatureName}
+              clothesArray={clothingItems}
+              onCardClick={() => {
+                handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
+              }}
+              itemCardData={(card) => {
+                setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main, then to the specific ItemCard, then return the card prop set (object) back to App, and then pass it ItemModal's children elements by reading its state
+              }}
+            />
+          }
         />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
-                weather={`${weatherData.weather}-${weatherData.time}`}
-                temperature={
-                  weatherData.temperature &&
-                  weatherData.temperature[currentTemperatureUnit]
-                } // ensures soft initializing of object before passing a specific temp unit.
-                // note: passing an obj isn't possible as a child otherwise. setting another state/ref as just the temperature to handle results in a delay and cause a mismatch. although the temp unit is a context, the value is still a prop. so solution was to use the var check before passing the prop onwards
-                temperatureName={weatherData.temperatureName}
-                clothesArray={clothingItems}
-                onCardClick={() => {
-                  handleModal("card"); // opens the modal window for the item card by passing to Main and then to ItemCard's onClick event handler
-                }}
-                itemCardData={(card) => {
-                  setItemCard(card); // in order to set the selected ItemCard, it needs to pass to Main, then to the specific ItemCard, then return the card prop set (object) back to App, and then pass it ItemModal's children elements by reading its state
-                }}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
-                clothesArray={clothingItems}
-                onAddClothesClick={() => handleModal("add-clothes")}
-                onCardClick={() => handleModal("card")}
-                itemCardData={(card) => setItemCard(card)}
-              />
-            }
-          />
-        </Routes>
-        <Footer />
-        {openedModal === "add-clothes" && (
-          <AddItemModal onClose={handleModal} onAddItem={handleAddItemSubmit} />
-        )}
-        {openedModal === "card" && (
-          <ItemModal
-            onClose={handleModal}
-            itemCardData={selectedItemCard} // App => Main => ItemCard
-            openDeleteConfirm={() => handleModal("delete-confirm")}
-          />
-        )}
-        {openedModal === "delete-confirm" && (
-          <DeleteConfirmModal
-            onClose={handleModal}
-            itemCardData={selectedItemCard}
-            onDeleteItem={handleCardDelete}
-          />
-        )}
-      </CurrentTemperatureUnitContext.Provider>
-    </>
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              onCloseMobileMenuClick={() => setMobileMenuOpened(false)}
+              clothesArray={clothingItems}
+              onAddClothesClick={() => handleModal("add-clothes")}
+              onCardClick={() => handleModal("card")}
+              itemCardData={(card) => setItemCard(card)}
+            />
+          }
+        />
+      </Routes>
+      <Footer />
+      {openedModal === "add-clothes" && (
+        <AddItemModal
+          onClose={handleModal}
+          onAddItem={handleAddItemSubmit}
+          buttonText={isLoading ? "Adding..." : "Add garment"}
+        />
+      )}
+      {openedModal === "card" && (
+        <ItemModal
+          onClose={handleModal}
+          itemCardData={selectedItemCard} // App => Main => ItemCard
+          openDeleteConfirm={() => handleModal("delete-confirm")}
+        />
+      )}
+      {openedModal === "delete-confirm" && (
+        <DeleteConfirmModal
+          onClose={handleModal}
+          itemCardData={selectedItemCard}
+          onDeleteItem={handleCardDelete}
+          buttonText={isLoading ? "Deleting..." : "Yes, delete item"}
+        />
+      )}
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
