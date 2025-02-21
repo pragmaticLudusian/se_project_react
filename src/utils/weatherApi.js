@@ -1,10 +1,9 @@
+import { _request } from "./api";
+
 export function fetchWeather({ latitude, longitude }, apiKey) {
-  return fetch(
+  return _request(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
-  ).then((res) => {
-    if (res.ok) return res.json();
-    return Promise.reject(`error ${res.status}`);
-  });
+  );
 }
 
 export function getWeatherInfo(data) {

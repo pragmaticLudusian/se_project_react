@@ -1,9 +1,9 @@
 const baseUrl = "http://localhost:3001";
 const baseHeaders = { "content-type": "application/json" };
 
-async function _request(url, options) {
+export async function _request(url, options) {
   return _checkResponse(await fetch(url, options));
-}
+} // can be used separately in weatherApi
 
 function _checkResponse(res) {
   return res.ok ? res.json() : Promise.reject(`error ${res.status}`);
