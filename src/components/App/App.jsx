@@ -52,12 +52,9 @@ function App() {
   }
 
   function handleAddItemSubmit({ name, imageUrl, weather }) {
+    setIsLoading(true);
     // newItem._id = clothingItems.length; // json-server handles the _id auto-generation
     addItem(name, imageUrl, weather)
-      .then((newItem) => {
-        setIsLoading(true);
-        return newItem;
-      })
       .then((newItem) => {
         setClothingItems((oldItems) => [newItem, ...oldItems]); // prevent state staleness
         handleModal();
@@ -67,8 +64,8 @@ function App() {
   } // AddItemModal -> ModalWithForm -> handleSubmit -> onAddItem(obj)
 
   function handleCardDelete() {
+    setIsLoading(true);
     deleteItem(selectedItemCard._id)
-      .then(() => setIsLoading(true))
       .then(() => {
         const filteredArray = clothingItems.filter(
           (item) => item !== selectedItemCard
